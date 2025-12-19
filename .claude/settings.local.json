@@ -21,7 +21,9 @@
       "mcp__playwright__browser_network_requests",
       "mcp__playwright__browser_close",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
