@@ -20,7 +20,8 @@
       "mcp__playwright__browser_fill_form",
       "mcp__playwright__browser_network_requests",
       "mcp__playwright__browser_close",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
