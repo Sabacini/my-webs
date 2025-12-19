@@ -23,6 +23,7 @@
 ## Требования к серверу
 
 ### Минимальные характеристики:
+
 - **OS**: Ubuntu 20.04/22.04 LTS или Debian 11/12
 - **CPU**: 1 vCPU
 - **RAM**: 1 GB
@@ -30,8 +31,9 @@
 - **Сеть**: 100 Mbps
 
 ### Что понадобится:
+
 - IP адрес сервера
-- Доменное имя (например: `digagru.com`)
+- Доменное имя (например: `my-webs.ru`)
 - SSH доступ с правами root или sudo
 
 ---
@@ -63,7 +65,7 @@ timedatectl set-timezone Europe/Moscow
 adduser deploy
 
 # Добавить в группу sudo
-usermod -aG sudo deploy
+adduser deploy
 
 # Переключиться на нового пользователя
 su - deploy
@@ -172,18 +174,19 @@ ADMIN_PASSWORD=ваш-сильный-пароль
 EMAIL_SERVICE=gmail
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-app-password
-EMAIL_TO=notifications@yourdomain.com
+EMAIL_TO=notifications@my-webs.ru
 
 # Telegram уведомления (опционально)
 TELEGRAM_BOT_TOKEN=your-bot-token
 TELEGRAM_CHAT_ID=your-chat-id
 
 # Настройки сайта
-SITE_URL=https://yourdomain.com
+SITE_URL=https://my-webs.ru
 AGENCY_NAME=DigAgRu
 ```
 
 **Генерация SESSION_SECRET:**
+
 ```bash
 # Способ 1: OpenSSL
 openssl rand -base64 32
@@ -225,7 +228,7 @@ upstream nodejs_backend {
 server {
     listen 80;
     listen [::]:80;
-    server_name yourdomain.com www.yourdomain.com;
+    server_name my-webs.ru www.my-webs.ru;
 
     # Для Let's Encrypt
     location /.well-known/acme-challenge/ {
@@ -255,24 +258,24 @@ server {
 # server {
 #     listen 443 ssl http2;
 #     listen [::]:443 ssl http2;
-#     server_name yourdomain.com www.yourdomain.com;
-# 
+#     server_name my-webs.ru www.my-webs.ru;
+#
 #     # SSL сертификаты (Let's Encrypt автоматически заполнит)
-#     ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
-#     ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
-# 
+#     ssl_certificate /etc/letsencrypt/live/my-webs.ru/fullchain.pem;
+#     ssl_certificate_key /etc/letsencrypt/live/my-webs.ru/privkey.pem;
+#
 #     # SSL настройки
 #     ssl_protocols TLSv1.2 TLSv1.3;
 #     ssl_ciphers HIGH:!aNULL:!MD5;
 #     ssl_prefer_server_ciphers on;
 #     ssl_session_cache shared:SSL:10m;
 #     ssl_session_timeout 10m;
-# 
+#
 #     # Security headers
 #     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 #     add_header X-Frame-Options "SAMEORIGIN" always;
 #     add_header X-Content-Type-Options "nosniff" always;
-# 
+#
 #     # Статические файлы с кэшированием
 #     location /images/ {
 #         alias /var/www/digagru/public/images/;
@@ -280,19 +283,19 @@ server {
 #         add_header Cache-Control "public, immutable";
 #         access_log off;
 #     }
-# 
+#
 #     location /css/ {
 #         alias /var/www/digagru/public/css/;
 #         expires 7d;
 #         add_header Cache-Control "public";
 #     }
-# 
+#
 #     location /js/ {
 #         alias /var/www/digagru/public/js/;
 #         expires 7d;
 #         add_header Cache-Control "public";
 #     }
-# 
+#
 #     # Проксирование на Node.js
 #     location / {
 #         proxy_pass http://nodejs_backend;
@@ -304,7 +307,7 @@ server {
 #         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 #         proxy_set_header X-Forwarded-Proto $scheme;
 #         proxy_cache_bypass $http_upgrade;
-#         
+#
 #         # Timeouts
 #         proxy_connect_timeout 60s;
 #         proxy_send_timeout 60s;
@@ -313,7 +316,7 @@ server {
 # }
 ```
 
-**ВАЖНО:** Замените `yourdomain.com` на ваш настоящий домен!
+**ВАЖНО:** Замените `my-webs.ru` на ваш настоящий домен!
 
 ### 2. Активируйте конфигурацию
 
@@ -333,7 +336,7 @@ sudo systemctl restart nginx
 
 ### 3. Проверьте работу
 
-Откройте в браузере: `http://yourdomain.com`
+Откройте в браузере: `http://my-webs.ru`
 
 ---
 
@@ -342,18 +345,20 @@ sudo systemctl restart nginx
 ### 1. Убедитесь что домен направлен на сервер
 
 Проверьте DNS записи:
+
 ```bash
-dig yourdomain.com +short
+dig my-webs.ru +short
 # Должен вернуть IP вашего сервера
 ```
 
 ### 2. Получите SSL сертификат
 
 ```bash
-sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+sudo certbot --nginx -d my-webs.ru -d www.my-webs.ru
 ```
 
 Certbot автоматически:
+
 - Получит сертификат
 - Настроит Nginx
 - Создаст автообновление
@@ -380,8 +385,9 @@ nano /var/www/digagru/.env
 ```
 
 Измените `SITE_URL`:
+
 ```env
-SITE_URL=https://yourdomain.com
+SITE_URL=https://my-webs.ru
 ```
 
 ### 6. Настройте автообновление сертификатов
@@ -409,24 +415,26 @@ nano ecosystem.config.js
 
 ```javascript
 module.exports = {
-  apps: [{
-    name: 'digagru',
-    script: './server/index.js',
-    instances: 1,
-    autorestart: true,
-    watch: false,
-    max_memory_restart: '500M',
-    env: {
-      NODE_ENV: 'production',
-      PORT: 3000
+  apps: [
+    {
+      name: "digagru",
+      script: "./server/index.js",
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: "500M",
+      env: {
+        NODE_ENV: "production",
+        PORT: 3000,
+      },
+      error_file: "./logs/pm2-error.log",
+      out_file: "./logs/pm2-out.log",
+      log_date_format: "YYYY-MM-DD HH:mm:ss Z",
+      merge_logs: true,
+      time: true,
     },
-    error_file: './logs/pm2-error.log',
-    out_file: './logs/pm2-out.log',
-    log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
-    merge_logs: true,
-    time: true
-  }]
-}
+  ],
+};
 ```
 
 ### 2. Создайте директорию для логов
@@ -683,6 +691,7 @@ pm2 logs digagru --lines 50
 ### 4. Настройка мониторинга uptime (опционально)
 
 Используйте бесплатные сервисы:
+
 - [UptimeRobot](https://uptimerobot.com) - бесплатный мониторинг (50 сайтов)
 - [Pingdom](https://www.pingdom.com) - бесплатный план
 - [StatusCake](https://www.statuscake.com) - бесплатный мониторинг
@@ -729,14 +738,14 @@ pm2 restart digagru
 
 ```bash
 # Проверить DNS
-dig yourdomain.com +short
+dig my-webs.ru +short
 
 # Проверить certbot логи
 sudo tail -f /var/log/letsencrypt/letsencrypt.log
 
 # Пересоздать сертификат
-sudo certbot delete -d yourdomain.com
-sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+sudo certbot delete -d my-webs.ru
+sudo certbot --nginx -d my-webs.ru -d www.my-webs.ru
 ```
 
 ### Проблема: 502 Bad Gateway
@@ -780,8 +789,8 @@ pm2 flush
 - [ ] PM2 запущен и автостарт настроен
 - [ ] Firewall настроен (22, 80, 443 открыты)
 - [ ] Резервное копирование настроено (cron)
-- [ ] Сайт открывается по https://yourdomain.com
-- [ ] Админ панель доступна: https://yourdomain.com/admin
+- [ ] Сайт открывается по https://my-webs.ru
+- [ ] Админ панель доступна: https://my-webs.ru/admin
 - [ ] Cookie consent работает
 - [ ] Форма контактов отправляет данные
 - [ ] Email/Telegram уведомления работают (если настроены)
@@ -801,14 +810,15 @@ pm2 flush
 ## 📞 Поддержка
 
 Если возникли проблемы:
+
 1. Проверьте логи: `pm2 logs digagru`
 2. Проверьте Nginx: `sudo tail -f /var/log/nginx/error.log`
 3. Проверьте раздел Troubleshooting выше
 
 ---
 
-**Автор:** DigAgRu Team  
-**Дата обновления:** 2025-12-19  
+**Автор:** DigAgRu Team
+**Дата обновления:** 2025-12-19
 **Версия:** 1.0
 
 🤖 Сгенерировано с помощью [Claude Code](https://claude.com/claude-code)

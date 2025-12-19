@@ -51,7 +51,7 @@ upstream nodejs_backend {
 
 server {
     listen 80;
-    server_name yourdomain.com www.yourdomain.com;
+    server_name my-webs.ru www.my-webs.ru;
     
     location / {
         proxy_pass http://nodejs_backend;
@@ -76,7 +76,7 @@ nginx -t && systemctl reload nginx
 ### 4. SSL сертификат
 
 ```bash
-certbot --nginx -d yourdomain.com -d www.yourdomain.com
+certbot --nginx -d my-webs.ru -d www.my-webs.ru
 ```
 
 ### 5. PM2 запуск
@@ -117,8 +117,8 @@ pm2 status
 pm2 logs digagru --lines 50
 
 # Открыть в браузере
-https://yourdomain.com
-https://yourdomain.com/admin
+https://my-webs.ru
+https://my-webs.ru/admin
 ```
 
 ---
