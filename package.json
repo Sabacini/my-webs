@@ -1,0 +1,36 @@
+{
+  "name": "digagru-agency-website",
+  "version": "1.0.0",
+  "description": "Multilingual website for digital agency with admin panel and CRM",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "build:css": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
+  },
+  "keywords": [
+    "digital-agency",
+    "crm",
+    "multilingual",
+    "tailwind"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.2.1",
+    "express-session": "^1.17.3",
+    "express-validator": "^7.3.1",
+    "helmet": "^8.1.0",
+    "node-telegram-bot-api": "^0.67.0",
+    "nodemailer": "^7.0.11",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "tailwindcss": "^3.4.0"
+  }
+}

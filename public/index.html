@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DigAgRu — Digital Agency for Small Business</title>
+    <meta
+      name="description"
+      content="Создание, продвижение и поддержка сайтов для малого бизнеса"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.png" />
+    <link rel="apple-touch-icon" href="/images/icons/favicon.png" />
+
+    <!-- Fonts: Plus Jakarta Sans (versatile, bold) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              display: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            colors: {
+              electric: "#0066FF",
+              "cyan-bright": "#00D9FF",
+              "orange-vibrant": "#FF6B00",
+              "pink-hot": "#FF006E",
+              "yellow-sunny": "#FFD500",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        /* Neo-Brutalist Light Mode - Bold & Vibrant */
+        --background: 0 0% 98%;
+        --foreground: 0 0% 5%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 5%;
+        --primary: 217 100% 50%; /* Electric Blue #0066FF */
+        --primary-foreground: 0 0% 100%;
+        --secondary: 189 100% 50%; /* Bright Cyan #00D9FF */
+        --secondary-foreground: 0 0% 5%;
+        --accent: 25 100% 50%; /* Vibrant Orange #FF6B00 */
+        --accent-foreground: 0 0% 100%;
+        --muted: 0 0% 96%;
+        --muted-foreground: 0 0% 40%;
+        --border: 0 0% 10%; /* Dark borders for contrast */
+        --input: 0 0% 95%;
+        --ring: 217 100% 50%;
+        --radius: 0.75rem;
+        /* New accent colors */
+        --pink: 333 100% 50%; /* Hot Pink #FF006E */
+        --yellow: 48 100% 50%; /* Sunny Yellow #FFD500 */
+      }
+
+      .dark {
+        /* Neo-Brutalist Dark Mode - Electric & Bold */
+        --background: 0 0% 6%;
+        --foreground: 0 0% 98%;
+        --card: 0 0% 10%;
+        --card-foreground: 0 0% 98%;
+        --primary: 217 100% 60%; /* Brighter blue for dark mode */
+        --primary-foreground: 0 0% 5%;
+        --secondary: 189 100% 60%; /* Brighter cyan */
+        --secondary-foreground: 0 0% 5%;
+        --accent: 25 100% 60%; /* Brighter orange */
+        --accent-foreground: 0 0% 5%;
+        --muted: 0 0% 15%;
+        --muted-foreground: 0 0% 65%;
+        --border: 0 0% 20%;
+        --input: 0 0% 15%;
+        --ring: 217 100% 60%;
+        --pink: 333 100% 60%;
+        --yellow: 48 100% 60%;
+      }
+
+      * {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        border-color: hsl(var(--border));
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+      }
+
+      /* Neo-Brutalist Card Style - Bold borders & shadows */
+      .card {
+        background-color: hsl(var(--card));
+        border: 3px solid hsl(var(--border));
+        box-shadow: 8px 8px 0 hsl(var(--border));
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+      }
+
+      .card:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 10px 10px 0 hsl(var(--border));
+      }
+
+      .card:active {
+        transform: translate(2px, 2px);
+        box-shadow: 4px 4px 0 hsl(var(--border));
+      }
+
+      /* Neo-Brutalist Button Styles */
+      .btn-primary {
+        background-color: hsl(var(--primary));
+        color: hsl(var(--primary-foreground));
+        padding: 0.75rem 2rem;
+        border-radius: 0;
+        font-weight: 700;
+        border: 3px solid hsl(var(--foreground));
+        box-shadow: 6px 6px 0 hsl(var(--foreground));
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.875rem;
+      }
+
+      .btn-primary:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 8px 8px 0 hsl(var(--foreground));
+      }
+
+      .btn-primary:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 hsl(var(--foreground));
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: hsl(var(--foreground));
+        padding: 0.75rem 2rem;
+        border-radius: 0;
+        font-weight: 700;
+        border: 3px solid hsl(var(--foreground));
+        box-shadow: 6px 6px 0 hsl(var(--foreground));
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-size: 0.875rem;
+      }
+
+      .btn-secondary:hover {
+        background-color: hsl(var(--secondary));
+        transform: translate(-2px, -2px);
+        box-shadow: 8px 8px 0 hsl(var(--foreground));
+      }
+
+      .btn-secondary:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 hsl(var(--foreground));
+      }
+
+      /* Neo-Brutalist Input Styles */
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        background-color: hsl(var(--background));
+        border: 3px solid hsl(var(--border));
+        border-radius: 0;
+        padding: 0.75rem 1rem;
+        transition: all 0.2s ease;
+        width: 100%;
+        font-weight: 500;
+      }
+
+      /* Checkbox and Radio special styling */
+      input[type="checkbox"],
+      input[type="radio"] {
+        width: 24px;
+        height: 24px;
+        border: 3px solid hsl(var(--border));
+        border-radius: 0;
+        cursor: pointer;
+        appearance: none;
+        background-color: hsl(var(--background));
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+      }
+
+      input[type="radio"] {
+        border-radius: 50%;
+      }
+
+      input[type="checkbox"]:checked,
+      input[type="radio"]:checked {
+        background-color: hsl(var(--primary));
+        border-color: hsl(var(--primary));
+      }
+
+      input[type="checkbox"]:checked::after {
+        content: "✓";
+        display: block;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 18px;
+      }
+
+      /* Calculator button styling */
+      .calc-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        padding: 0.75rem 1.5rem;
+        border: 3px solid hsl(var(--foreground));
+        border-radius: 0;
+        background-color: transparent;
+        color: hsl(var(--foreground));
+        box-shadow: 6px 6px 0 hsl(var(--foreground));
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        min-height: 80px;
+      }
+
+      .calc-option input[type="radio"]:checked + .calc-btn {
+        background-color: hsl(var(--primary));
+        color: hsl(var(--primary-foreground));
+        border-color: hsl(var(--foreground));
+        transform: translate(-2px, -2px);
+        box-shadow: 8px 8px 0 hsl(var(--foreground));
+      }
+
+      .calc-btn:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 7px 7px 0 hsl(var(--foreground));
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: hsl(var(--primary));
+        box-shadow: 4px 4px 0 hsl(var(--primary));
+        transform: translate(-1px, -1px);
+      }
+
+      /* Colorful Accent Helpers */
+      .accent-blue {
+        color: hsl(var(--primary));
+      }
+      .accent-cyan {
+        color: hsl(var(--secondary));
+      }
+      .accent-orange {
+        color: hsl(var(--accent));
+      }
+      .accent-pink {
+        color: hsl(var(--pink));
+      }
+      .accent-yellow {
+        color: hsl(var(--yellow));
+      }
+
+      .bg-accent-blue {
+        background-color: hsl(var(--primary));
+      }
+      .bg-accent-cyan {
+        background-color: hsl(var(--secondary));
+      }
+      .bg-accent-orange {
+        background-color: hsl(var(--accent));
+      }
+      .bg-accent-pink {
+        background-color: hsl(var(--pink));
+      }
+      .bg-accent-yellow {
+        background-color: hsl(var(--yellow));
+      }
+
+      /* Reveal animations - subtle */
+      .reveal {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.5s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Hero animations - bold entrance */
+      @keyframes heroFadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes heroFadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .hero-title {
+        animation: heroFadeInUp 0.8s ease-out forwards;
+        opacity: 0;
+      }
+
+      .hero-subtitle {
+        animation: heroFadeInUp 0.8s ease-out 0.2s forwards;
+        opacity: 0;
+      }
+
+      .hero-cta {
+        animation: heroFadeInUp 0.8s ease-out 0.4s forwards;
+        opacity: 0;
+      }
+
+      .hero-bg {
+        animation: heroFadeIn 1.2s ease-out forwards;
+        opacity: 0;
+      }
+
+      /* Nav link style */
+      .nav-link {
+        position: relative;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        color: hsl(var(--muted-foreground));
+      }
+
+      .nav-link:hover {
+        color: hsl(var(--foreground));
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: hsl(var(--background));
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: hsl(var(--muted-foreground) / 0.3);
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--muted-foreground) / 0.5);
+      }
+
+      /* Clean accents */
+      .accent-border {
+        border-left: 3px solid hsl(var(--primary));
+      }
+
+      /* Progress Bar */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          hsl(var(--primary)) 0%,
+          hsl(var(--primary) / 0.6) 100%
+        );
+        z-index: 100;
+        transition: width 0.1s ease-out;
+        box-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+      }
+
+      /* Interactive Background */
+      .interactive-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.4;
+        transition: opacity 0.3s ease;
+      }
+
+      .interactive-bg::before,
+      .interactive-bg::after {
+        content: "";
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        filter: blur(120px);
+        transition: transform 0.3s ease-out;
+      }
+
+      .interactive-bg::before {
+        top: -200px;
+        right: -200px;
+        background: radial-gradient(
+          circle,
+          hsl(var(--primary) / 0.15) 0%,
+          transparent 70%
+        );
+      }
+
+      .interactive-bg::after {
+        bottom: -200px;
+        left: -200px;
+        background: radial-gradient(
+          circle,
+          hsl(var(--primary) / 0.1) 0%,
+          transparent 70%
+        );
+      }
+
+      .dark .interactive-bg {
+        opacity: 0.2;
+      }
+
+      .dark .interactive-bg::before {
+        background: radial-gradient(
+          circle,
+          hsl(var(--primary) / 0.08) 0%,
+          transparent 70%
+        );
+      }
+
+      .dark .interactive-bg::after {
+        background: radial-gradient(
+          circle,
+          hsl(var(--primary) / 0.06) 0%,
+          transparent 70%
+        );
+      }
+
+      /* Cursor follower */
+      .cursor-gradient {
+        position: fixed;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          hsl(var(--primary) / 0.08) 0%,
+          transparent 60%
+        );
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: -1;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 0;
+      }
+
+      .dark .cursor-gradient {
+        background: radial-gradient(
+          circle,
+          hsl(var(--primary) / 0.05) 0%,
+          transparent 60%
+        );
+      }
+
+      @media (hover: hover) {
+        .cursor-gradient {
+          opacity: 1;
+        }
+      }
+
+      /* FAQ Answer Animation */
+      .faq-answer {
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .faq-answer.faq-closed {
+        max-height: 0;
+      }
+
+      /* Stacked Cards Effect */
+      section.card-section {
+        position: sticky;
+        min-height: 100vh;
+        background-color: hsl(var(--background));
+        border-radius: 24px 24px 0 0;
+        border: 1px solid hsl(var(--border));
+        border-bottom: none;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+        margin-bottom: 0;
+        transform-origin: top center;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.3s ease-out;
+      }
+
+      /* Footer styling - ensure it appears after stacked sections */
+      footer {
+        position: relative;
+        z-index: 9999;
+        background-color: hsl(var(--background));
+      }
+    </style>
+  </head>
+  <body class="transition-colors duration-300">
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+
+    <!-- Interactive Background -->
+    <div class="interactive-bg" id="interactiveBg"></div>
+    <div class="cursor-gradient" id="cursorGradient"></div>
+
+    <!-- Mobile Top Navigation (visible on small screens) -->
+    <nav
+      class="md:hidden fixed top-0 left-0 right-0 bg-white/90 dark:bg-[hsl(var(--background))]/90 backdrop-blur-lg z-[9999] border-b"
+    >
+      <div class="flex justify-between items-center px-4 h-16">
+        <!-- Logo -->
+        <a
+          href="#"
+          class="block"
+        >
+          <img src="/images/logos/logo.png" alt="DigAgRu" class="h-8 w-auto" />
+        </a>
+
+        <!-- Mobile Controls -->
+        <div class="flex items-center gap-2">
+          <!-- Language Switcher -->
+          <button
+            id="langToggleMobile"
+            class="p-2 rounded-md hover:bg-[hsl(var(--accent))] transition"
+          >
+            <span id="langTextMobile" class="font-semibold text-sm">EN</span>
+          </button>
+
+          <!-- Theme Switcher -->
+          <button
+            id="themeToggleMobile"
+            class="p-2 rounded-md hover:bg-[hsl(var(--accent))] transition"
+          >
+            <svg
+              id="sunIconMobile"
+              class="w-5 h-5 hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <svg
+              id="moonIconMobile"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Menu Button -->
+          <button
+            id="mobileMenuBtn"
+            class="p-2 rounded-md hover:bg-[hsl(var(--accent))]"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div
+        id="mobileMenu"
+        class="hidden bg-white dark:bg-[hsl(var(--background))] border-t"
+      >
+        <div class="px-4 py-4 space-y-2">
+          <a
+            href="#about"
+            class="block py-3 px-3 rounded-md hover:bg-[hsl(var(--accent))] nav-link"
+            data-i18n="nav.about"
+            >О нас</a
+          >
+          <a
+            href="#services"
+            class="block py-3 px-3 rounded-md hover:bg-[hsl(var(--accent))] nav-link"
+            data-i18n="nav.services"
+            >Услуги</a
+          >
+          <a
+            href="#advantages"
+            class="block py-3 px-3 rounded-md hover:bg-[hsl(var(--accent))] nav-link"
+            data-i18n="nav.advantages"
+            >Преимущества</a
+          >
+          <a
+            href="#testimonials"
+            class="block py-3 px-3 rounded-md hover:bg-[hsl(var(--accent))] nav-link"
+            data-i18n="nav.testimonials"
+            >Отзывы</a
+          >
+          <a
+            href="#contact"
+            class="block py-3 px-3 rounded-md hover:bg-[hsl(var(--accent))] nav-link"
+            data-i18n="nav.contact"
+            >Контакты</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Vertical Navigation (visible on medium+ screens) -->
+    <nav
+      class="hidden md:flex fixed left-0 top-0 h-screen w-24 flex-col items-center py-8 z-[9999]"
+      style="background: transparent"
+    >
+      <div class="flex flex-col items-center space-y-8 w-full">
+        <!-- Logo -->
+        <a
+          href="#"
+          class="mb-8 block"
+        >
+          <img src="/images/logos/logo.png" alt="DigAgRu" class="h-12 w-auto" />
+        </a>
+
+        <!-- Desktop Navigation - Vertical -->
+        <div class="flex flex-col items-center space-y-6 flex-1">
+          <a
+            href="#about"
+            class="nav-link text-sm"
+            data-i18n="nav.about"
+            style="writing-mode: vertical-rl; transform: rotate(180deg)"
+            >О нас</a
+          >
+          <a
+            href="#services"
+            class="nav-link text-sm"
+            data-i18n="nav.services"
+            style="writing-mode: vertical-rl; transform: rotate(180deg)"
+            >Услуги</a
+          >
+          <a
+            href="#advantages"
+            class="nav-link text-sm"
+            data-i18n="nav.advantages"
+            style="writing-mode: vertical-rl; transform: rotate(180deg)"
+            >Преимущества</a
+          >
+          <a
+            href="#testimonials"
+            class="nav-link text-sm"
+            data-i18n="nav.testimonials"
+            style="writing-mode: vertical-rl; transform: rotate(180deg)"
+            >Отзывы</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-sm"
+            data-i18n="nav.contact"
+            style="writing-mode: vertical-rl; transform: rotate(180deg)"
+            >Контакты</a
+          >
+        </div>
+
+        <!-- Controls -->
+        <div class="flex flex-col items-center space-y-4">
+          <!-- Language Switcher -->
+          <button
+            id="langToggle"
+            class="p-2 rounded-md hover:bg-[hsl(var(--accent))] transition"
+          >
+            <span id="langText" class="font-semibold text-sm">EN</span>
+          </button>
+
+          <!-- Theme Switcher -->
+          <button
+            id="themeToggle"
+            class="p-2 rounded-md hover:bg-[hsl(var(--accent))] transition"
+          >
+            <svg
+              id="sunIcon"
+              class="w-5 h-5 hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <svg
+              id="moonIcon"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Admin Panel Link -->
+          <a
+            href="/admin"
+            class="p-2 rounded-md hover:bg-[hsl(var(--accent))] transition opacity-50 hover:opacity-100"
+            title="Admin Panel"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content with left margin for vertical nav -->
+    <div class="mt-16 md:mt-0 md:ml-24">
+      <!-- Hero Section -->
+      <section
+        class="relative py-24 px-6 lg:px-8 overflow-hidden min-h-[600px] flex items-center justify-center"
+      >
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0 hero-bg">
+          <img
+            src="/images/backgrounds/BG elements.png"
+            alt="Hero Background"
+            class="w-full h-full object-cover opacity-20 dark:opacity-10"
+          />
+        </div>
+
+        <!-- Gradient Overlay for better text readability -->
+        <div
+          class="absolute inset-0 z-0"
+          style="
+            background: linear-gradient(
+              50deg,
+              hsl(var(--background)) 0%,
+              hsl(var(--background) / 0.05) 50%,
+              hsl(var(--primary) / 0.1) 100%
+            );
+          "
+        ></div>
+
+        <!-- Content -->
+        <div class="max-w-7xl mx-auto relative z-10 w-full text-center">
+          <div>
+            <h1
+              class="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 hero-title"
+            >
+              <span data-i18n="hero.line1">Сайты,</span>
+              <span data-i18n="hero.line2">которые</span>
+              <span style="color: hsl(var(--primary))" data-i18n="hero.line3"
+                >работают</span
+              >
+            </h1>
+            <p
+              class="text-lg md:text-xl mb-10 mx-auto max-w-2xl hero-subtitle"
+              style="color: hsl(var(--muted-foreground))"
+              data-i18n="hero.subtitle"
+            >
+              Полный цикл разработки и продвижения для малого бизнеса
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center hero-cta">
+              <a href="#contact" class="btn-primary" data-i18n="hero.cta">
+                <span>Оставить заявку</span>
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="#services"
+                class="btn-secondary"
+                data-i18n="hero.learn_more"
+              >
+                Узнать больше
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section
+        id="about"
+        class="py-24 px-6 lg:px-8"
+        style="background-color: hsl(var(--muted))"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div class="grid lg:grid-cols-5 gap-12 items-start">
+            <div class="lg:col-span-2 reveal">
+              <h2
+                class="text-4xl md:text-5xl font-display font-bold mb-4"
+                data-i18n="about.title"
+              >
+                О нас
+              </h2>
+            </div>
+            <div
+              class="lg:col-span-3 space-y-4 reveal accent-border pl-4"
+              style="animation-delay: 0.1s"
+            >
+              <p
+                class="text-base leading-relaxed"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="about.text1"
+              >
+                DigAgRu — это микро-агентство, специализирующееся на создании
+                эффективных веб-решений для малого бизнеса и частных
+                предпринимателей. Мы понимаем, что каждый рубль на счету,
+                поэтому предлагаем оптимальные решения без переплат.
+              </p>
+              <p
+                class="text-base leading-relaxed"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="about.text2"
+              >
+                Наша миссия — помочь малому бизнесу выйти в онлайн и получить
+                новых клиентов. Мы работаем прозрачно, предоставляем отчётность
+                и всегда на связи.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            <div
+              class="reveal card rounded-lg p-8 text-center"
+              style="animation-delay: 0.2s"
+            >
+              <div
+                class="text-4xl font-display font-bold mb-2"
+                style="color: hsl(var(--primary))"
+                data-counter="5"
+                data-suffix="+"
+              >
+                0+
+              </div>
+              <p
+                class="text-sm"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="about.stat1"
+              >
+                Лет опыта
+              </p>
+            </div>
+            <div
+              class="reveal card rounded-lg p-8 text-center"
+              style="animation-delay: 0.3s"
+            >
+              <div
+                class="text-4xl font-display font-bold mb-2"
+                style="color: hsl(var(--primary))"
+                data-counter="50"
+                data-suffix="+"
+              >
+                0+
+              </div>
+              <p
+                class="text-sm"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="about.stat2"
+              >
+                Реализованных проектов
+              </p>
+            </div>
+            <div
+              class="reveal card rounded-lg p-8 text-center"
+              style="animation-delay: 0.4s"
+            >
+              <div
+                class="text-4xl font-display font-bold mb-2"
+                style="color: hsl(var(--primary))"
+                data-counter="100"
+                data-suffix="%"
+              >
+                0%
+              </div>
+              <p
+                class="text-sm"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="about.stat3"
+              >
+                Довольных клиентов
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="py-24 px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 reveal max-w-2xl mx-auto">
+            <h2
+              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              data-i18n="services.title"
+            >
+              Наши услуги
+            </h2>
+            <p
+              class="text-base"
+              style="color: hsl(var(--muted-foreground))"
+              data-i18n="services.subtitle"
+            >
+              Комплексные решения для вашего бизнеса
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Service 1 -->
+            <div
+              class="reveal card rounded-lg p-6"
+              style="animation-delay: 0.1s"
+            >
+              <div
+                class="w-12 h-12 rounded-md flex items-center justify-center mb-4"
+                style="background-color: hsl(var(--primary) / 0.1)"
+              >
+                <svg
+                  class="w-6 h-6"
+                  style="color: hsl(var(--primary))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-2"
+                data-i18n="services.web_dev.title"
+              >
+                Создание сайтов
+              </h3>
+              <p
+                class="text-sm mb-4"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="services.web_dev.desc"
+              >
+                Разработка сайтов-визиток, лендингов и интернет-магазинов под
+                ключ
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.web_dev.feat1"
+                    >Адаптивный дизайн</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.web_dev.feat2"
+                    >Современные технологии</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.web_dev.feat3"
+                    >Быстрая загрузка</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Service 2 -->
+            <div
+              class="reveal card rounded-lg p-6"
+              style="animation-delay: 0.2s"
+            >
+              <div
+                class="w-12 h-12 rounded-md flex items-center justify-center mb-4"
+                style="background-color: hsl(var(--primary) / 0.1)"
+              >
+                <svg
+                  class="w-6 h-6"
+                  style="color: hsl(var(--primary))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                  ></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-2"
+                data-i18n="services.promotion.title"
+              >
+                Продвижение
+              </h3>
+              <p
+                class="text-sm mb-4"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="services.promotion.desc"
+              >
+                SEO-оптимизация, контекстная реклама и повышение конверсии
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.promotion.feat1"
+                    >SEO-оптимизация</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.promotion.feat2"
+                    >Контекстная реклама</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.promotion.feat3"
+                    >Аналитика и отчеты</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Service 3 -->
+            <div
+              class="reveal card rounded-lg p-6"
+              style="animation-delay: 0.3s"
+            >
+              <div
+                class="w-12 h-12 rounded-md flex items-center justify-center mb-4"
+                style="background-color: hsl(var(--primary) / 0.1)"
+              >
+                <svg
+                  class="w-6 h-6"
+                  style="color: hsl(var(--primary))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-2"
+                data-i18n="services.support.title"
+              >
+                Поддержка сайтов
+              </h3>
+              <p
+                class="text-sm mb-4"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="services.support.desc"
+              >
+                Техническая и контентная поддержка вашего сайта
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.support.feat1"
+                    >Обновление контента</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.support.feat2"
+                    >Исправление ошибок</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.support.feat3"
+                    >Резервное копирование</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Service 4 -->
+            <div
+              class="reveal card rounded-lg p-6"
+              style="animation-delay: 0.4s"
+            >
+              <div
+                class="w-12 h-12 rounded-md flex items-center justify-center mb-4"
+                style="background-color: hsl(var(--primary) / 0.1)"
+              >
+                <svg
+                  class="w-6 h-6"
+                  style="color: hsl(var(--primary))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  ></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-2"
+                data-i18n="services.crm.title"
+              >
+                Автоматизация CRM
+              </h3>
+              <p
+                class="text-sm mb-4"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="services.crm.desc"
+              >
+                Настройка и интеграция CRM-систем для управления клиентами
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.crm.feat1"
+                    >Интеграция с сайтом</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.crm.feat2"
+                    >Автоматические воронки</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.crm.feat3">Отчётность</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Service 5 -->
+            <div
+              class="reveal card rounded-lg p-6"
+              style="animation-delay: 0.5s"
+            >
+              <div
+                class="w-12 h-12 rounded-md flex items-center justify-center mb-4"
+                style="background-color: hsl(var(--primary) / 0.1)"
+              >
+                <svg
+                  class="w-6 h-6"
+                  style="color: hsl(var(--primary))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                  ></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-2"
+                data-i18n="services.bots.title"
+              >
+                Telegram-боты
+              </h3>
+              <p
+                class="text-sm mb-4"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="services.bots.desc"
+              >
+                Разработка ботов для автоматизации бизнеса в Telegram
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.bots.feat1">Приём заказов</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.bots.feat2">Автоматизация FAQ</span>
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.bots.feat3"
+                    >Уведомления клиентам</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Service 6 -->
+            <div
+              class="reveal card rounded-lg p-6"
+              style="animation-delay: 0.6s"
+            >
+              <div
+                class="w-12 h-12 rounded-md flex items-center justify-center mb-4"
+                style="background-color: hsl(var(--primary) / 0.1)"
+              >
+                <svg
+                  class="w-6 h-6"
+                  style="color: hsl(var(--primary))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                  ></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-2"
+                data-i18n="services.hosting.title"
+              >
+                Хостинг и сопровождение
+              </h3>
+              <p
+                class="text-sm mb-4"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="services.hosting.desc"
+              >
+                Размещение на серверах и техническое сопровождение
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.hosting.feat1"
+                    >Быстрые серверы</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.hosting.feat2"
+                    >SSL-сертификаты</span
+                  >
+                </li>
+                <li class="flex items-center text-sm">
+                  <span
+                    class="w-1 h-1 rounded-full mr-2"
+                    style="background-color: hsl(var(--primary))"
+                  ></span>
+                  <span data-i18n="services.hosting.feat3"
+                    >Мониторинг 24/7</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Advantages Section -->
+      <section
+        id="advantages"
+        class="py-24 px-6 lg:px-8"
+        style="background-color: hsl(var(--muted))"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 reveal max-w-2xl mx-auto">
+            <h2
+              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              data-i18n="advantages.title"
+            >
+              Наши преимущества
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="reveal card rounded-lg px-6 pt-8 pb-12 text-center min-h-[280px] flex flex-col justify-start"
+              style="animation-delay: 0.1s"
+            >
+              <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: hsl(var(--primary) / 0.1);">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: hsl(var(--primary))">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-4"
+                data-i18n="advantages.individual.title"
+              >
+                Индивидуальный подход
+              </h3>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="advantages.individual.desc"
+              >
+                Решение под ваши задачи и бюджет
+              </p>
+            </div>
+            <div
+              class="reveal card rounded-lg px-6 pt-8 pb-12 text-center min-h-[280px] flex flex-col justify-start"
+              style="animation-delay: 0.2s"
+            >
+              <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: hsl(var(--secondary) / 0.1);">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: hsl(var(--secondary))">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-4"
+                data-i18n="advantages.price.title"
+              >
+                Простые решения
+              </h3>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="advantages.price.desc"
+              >
+                Без переплат и скрытых комиссий
+              </p>
+            </div>
+            <div
+              class="reveal card rounded-lg px-6 pt-8 pb-12 text-center min-h-[280px] flex flex-col justify-start"
+              style="animation-delay: 0.3s"
+            >
+              <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: hsl(var(--accent) / 0.1);">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: hsl(var(--accent))">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-4"
+                data-i18n="advantages.support.title"
+              >
+                Поддержка
+              </h3>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="advantages.support.desc"
+              >
+                На всех этапах сотрудничества
+              </p>
+            </div>
+            <div
+              class="reveal card rounded-lg px-6 pt-8 pb-12 text-center min-h-[280px] flex flex-col justify-start"
+              style="animation-delay: 0.4s"
+            >
+              <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: hsl(var(--pink) / 0.1);">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: hsl(var(--pink))">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <h3
+                class="text-lg font-display font-semibold mb-4"
+                data-i18n="advantages.transparency.title"
+              >
+                Прозрачность
+              </h3>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: hsl(var(--muted-foreground))"
+                data-i18n="advantages.transparency.desc"
+              >
+                Отчётность и контроль результатов
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="py-24 px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 reveal max-w-2xl mx-auto">
+            <h2
+              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              data-i18n="testimonials.title"
+            >
+              Отзывы клиентов
+            </h2>
+          </div>
+          <div
+            id="testimonialsContainer"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <!-- Testimonials will be loaded dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Calculator Section -->
+      <section
+        id="calculator"
+        class="py-16 px-6 lg:px-8"
+        style="background-color: hsl(var(--muted))"
+      >
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-8 reveal">
+            <h2
+              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              data-i18n="calculator.title"
+            >
+              Калькулятор стоимости
+            </h2>
+            <p
+              class="text-base"
+              style="color: hsl(var(--muted-foreground))"
+              data-i18n="calculator.subtitle"
+            >
+              Рассчитайте примерную стоимость вашего проекта
+            </p>
+          </div>
+
+          <div
+            class="reveal card p-6"
+            style="animation-delay: 0.1s; overflow-y: auto"
+          >
+            <form id="calculatorForm">
+              <!-- Project Type -->
+              <div class="mb-5">
+                <label
+                  class="block text-sm font-semibold mb-3"
+                  data-i18n="calculator.project_type"
+                  >Тип проекта</label
+                >
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="projectType"
+                      value="landing"
+                      data-price="30000"
+                      checked
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span class="font-bold" data-i18n="calculator.landing"
+                        >Лендинг</span
+                      >
+                      <span class="text-xs opacity-80">от 30 000₽</span>
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="projectType"
+                      value="corporate"
+                      data-price="80000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span class="font-bold" data-i18n="calculator.corporate"
+                        >Корпоративный сайт</span
+                      >
+                      <span class="text-xs opacity-80">от 80 000₽</span>
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="projectType"
+                      value="ecommerce"
+                      data-price="150000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span class="font-bold" data-i18n="calculator.ecommerce"
+                        >Интернет-магазин</span
+                      >
+                      <span class="text-xs opacity-80">от 150 000₽</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Pages -->
+              <div class="mb-5">
+                <label
+                  class="block text-sm font-semibold mb-3"
+                  data-i18n="calculator.pages"
+                  >Количество страниц</label
+                >
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="pages"
+                      value="1-5"
+                      data-price="0"
+                      checked
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span class="font-bold">1-5</span>
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="pages"
+                      value="6-10"
+                      data-price="15000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span class="font-bold">6-10</span>
+                      <span class="text-xs opacity-80">+15 000₽</span>
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="pages"
+                      value="11-20"
+                      data-price="30000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span class="font-bold">11-20</span>
+                      <span class="text-xs opacity-80">+30 000₽</span>
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="pages"
+                      value="20+"
+                      data-price="50000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span class="font-bold">20+</span>
+                      <span class="text-xs opacity-80">+50 000₽</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Design -->
+              <div class="mb-5">
+                <label
+                  class="block text-sm font-semibold mb-3"
+                  data-i18n="calculator.design"
+                  >Сложность дизайна</label
+                >
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="design"
+                      value="basic"
+                      data-price="0"
+                      checked
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span
+                        class="font-bold"
+                        data-i18n="calculator.design_basic"
+                        >Базовый</span
+                      >
+                      <span
+                        class="text-xs opacity-80"
+                        data-i18n="calculator.design_basic_desc"
+                        >Готовый шаблон</span
+                      >
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="design"
+                      value="custom"
+                      data-price="40000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span
+                        class="font-bold"
+                        data-i18n="calculator.design_custom"
+                        >Кастомный</span
+                      >
+                      <span class="text-xs opacity-80">+40 000₽</span>
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="design"
+                      value="premium"
+                      data-price="80000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span
+                        class="font-bold"
+                        data-i18n="calculator.design_premium"
+                        >Премиум</span
+                      >
+                      <span class="text-xs opacity-80">+80 000₽</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Features -->
+              <div class="mb-6">
+                <label
+                  class="block text-sm font-semibold mb-3"
+                  data-i18n="calculator.features"
+                  >Дополнительные функции</label
+                >
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label
+                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                  >
+                    <input
+                      type="checkbox"
+                      name="features"
+                      value="seo"
+                      data-price="20000"
+                      class="mr-3"
+                    />
+                    <span class="flex-1 text-sm" data-i18n="calculator.feat_seo"
+                      >SEO-оптимизация (+20 000₽)</span
+                    >
+                  </label>
+                  <label
+                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                  >
+                    <input
+                      type="checkbox"
+                      name="features"
+                      value="crm"
+                      data-price="30000"
+                      class="mr-3"
+                    />
+                    <span class="flex-1 text-sm" data-i18n="calculator.feat_crm"
+                      >Интеграция с CRM (+30 000₽)</span
+                    >
+                  </label>
+                  <label
+                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                  >
+                    <input
+                      type="checkbox"
+                      name="features"
+                      value="multilang"
+                      data-price="25000"
+                      class="mr-3"
+                    />
+                    <span
+                      class="flex-1 text-sm"
+                      data-i18n="calculator.feat_multilang"
+                      >Многоязычность (+25 000₽)</span
+                    >
+                  </label>
+                  <label
+                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                  >
+                    <input
+                      type="checkbox"
+                      name="features"
+                      value="bot"
+                      data-price="40000"
+                      class="mr-3"
+                    />
+                    <span class="flex-1 text-sm" data-i18n="calculator.feat_bot"
+                      >Telegram-бот (+40 000₽)</span
+                    >
+                  </label>
+                  <label
+                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                  >
+                    <input
+                      type="checkbox"
+                      name="features"
+                      value="analytics"
+                      data-price="15000"
+                      class="mr-3"
+                    />
+                    <span
+                      class="flex-1 text-sm"
+                      data-i18n="calculator.feat_analytics"
+                      >Веб-аналитика (+15 000₽)</span
+                    >
+                  </label>
+                  <label
+                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                  >
+                    <input
+                      type="checkbox"
+                      name="features"
+                      value="booking"
+                      data-price="35000"
+                      class="mr-3"
+                    />
+                    <span
+                      class="flex-1 text-sm"
+                      data-i18n="calculator.feat_booking"
+                      >Система онлайн-записи (+35 000₽)</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <!-- Support -->
+              <div class="mb-6">
+                <label
+                  class="block text-sm font-semibold mb-3"
+                  data-i18n="calculator.support"
+                  >Техническая поддержка</label
+                >
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="support"
+                      value="none"
+                      data-price="0"
+                      checked
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span
+                        class="font-bold"
+                        data-i18n="calculator.support_none"
+                        >Без поддержки</span
+                      >
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="support"
+                      value="3months"
+                      data-price="15000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span class="font-bold" data-i18n="calculator.support_3mo"
+                        >3 месяца</span
+                      >
+                      <span class="text-xs opacity-80">+15 000₽</span>
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="support"
+                      value="6months"
+                      data-price="25000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span class="font-bold" data-i18n="calculator.support_6mo"
+                        >6 месяцев</span
+                      >
+                      <span class="text-xs opacity-80">+25 000₽</span>
+                    </div>
+                  </label>
+                  <label class="calc-option cursor-pointer">
+                    <input
+                      type="radio"
+                      name="support"
+                      value="12months"
+                      data-price="40000"
+                      class="hidden"
+                    />
+                    <div class="calc-btn">
+                      <span
+                        class="font-bold"
+                        data-i18n="calculator.support_12mo"
+                        >12 месяцев</span
+                      >
+                      <span class="text-xs opacity-80">+40 000₽</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Result -->
+              <div
+                class="border rounded-md p-6 text-center"
+                style="background-color: hsl(var(--primary) / 0.05)"
+              >
+                <div
+                  class="text-xs font-medium mb-2"
+                  style="color: hsl(var(--muted-foreground))"
+                  data-i18n="calculator.estimated_cost"
+                >
+                  Примерная стоимость проекта
+                </div>
+                <div
+                  id="calculatorResult"
+                  class="text-3xl font-display font-bold mb-3"
+                  style="color: hsl(var(--primary))"
+                >
+                  30 000₽
+                </div>
+                <p
+                  class="text-xs"
+                  style="color: hsl(var(--muted-foreground))"
+                  data-i18n="calculator.disclaimer"
+                >
+                  * Окончательная стоимость определяется после детального
+                  обсуждения проекта
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="py-24 px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16 reveal">
+            <h2
+              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              data-i18n="faq.title"
+            >
+              Часто задаваемые вопросы
+            </h2>
+          </div>
+
+          <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div
+              class="reveal card rounded-lg overflow-hidden"
+              style="animation-delay: 0.1s"
+            >
+              <button
+                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+              >
+                <span class="font-medium text-sm pr-8" data-i18n="faq.q1"
+                  >Сколько времени занимает разработка сайта?</span
+                >
+                <svg
+                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  style="color: hsl(var(--muted-foreground))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer faq-closed px-6 pb-6">
+                <p
+                  class="text-sm"
+                  style="color: hsl(var(--muted-foreground))"
+                  data-i18n="faq.a1"
+                >
+                  Лендинг — 1-2 недели, корпоративный сайт — 3-4 недели,
+                  интернет-магазин — от 6 недель. Сроки зависят от сложности
+                  проекта и вашей готовности предоставить контент.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div
+              class="reveal card rounded-lg overflow-hidden"
+              style="animation-delay: 0.2s"
+            >
+              <button
+                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+              >
+                <span class="font-medium text-sm pr-8" data-i18n="faq.q2"
+                  >Что входит в стоимость?</span
+                >
+                <svg
+                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  style="color: hsl(var(--muted-foreground))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer faq-closed px-6 pb-6">
+                <p
+                  class="text-sm"
+                  style="color: hsl(var(--muted-foreground))"
+                  data-i18n="faq.a2"
+                >
+                  Дизайн, разработка, адаптация под мобильные устройства,
+                  базовая SEO-оптимизация, размещение на хостинге, 1 месяц
+                  технической поддержки и обучение работе с сайтом.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div
+              class="reveal card rounded-lg overflow-hidden"
+              style="animation-delay: 0.3s"
+            >
+              <button
+                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+              >
+                <span class="font-medium text-sm pr-8" data-i18n="faq.q3"
+                  >Нужно ли мне готовить контент?</span
+                >
+                <svg
+                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  style="color: hsl(var(--muted-foreground))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer faq-closed px-6 pb-6">
+                <p
+                  class="text-sm"
+                  style="color: hsl(var(--muted-foreground))"
+                  data-i18n="faq.a3"
+                >
+                  Идеально, если у вас есть готовые тексты и изображения. Но мы
+                  можем помочь с подготовкой контента за дополнительную плату
+                  или использовать временный контент для первого запуска.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div
+              class="reveal card rounded-lg overflow-hidden"
+              style="animation-delay: 0.4s"
+            >
+              <button
+                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+              >
+                <span class="font-medium text-sm pr-8" data-i18n="faq.q4"
+                  >Какая система управления используется?</span
+                >
+                <svg
+                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  style="color: hsl(var(--muted-foreground))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer faq-closed px-6 pb-6">
+                <p
+                  class="text-sm"
+                  style="color: hsl(var(--muted-foreground))"
+                  data-i18n="faq.a4"
+                >
+                  Мы подбираем CMS под ваши задачи: WordPress для блогов и
+                  корпоративных сайтов, Shopify/WooCommerce для
+                  интернет-магазинов, или custom решения для особых требований.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div
+              class="reveal card rounded-lg overflow-hidden"
+              style="animation-delay: 0.5s"
+            >
+              <button
+                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+              >
+                <span class="font-medium text-sm pr-8" data-i18n="faq.q5"
+                  >Как происходит оплата?</span
+                >
+                <svg
+                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  style="color: hsl(var(--muted-foreground))"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </button>
+              <div class="faq-answer faq-closed px-6 pb-6">
+                <p
+                  class="text-sm"
+                  style="color: hsl(var(--muted-foreground))"
+                  data-i18n="faq.a5"
+                >
+                  50% предоплата при подписании договора, 50% после завершения
+                  проекта и передачи всех материалов. Возможна рассрочка для
+                  крупных проектов.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="py-24 px-6 lg:px-8 border-b-[3px]"
+        style="background-color: hsl(var(--muted))"
+      >
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center mb-16 reveal">
+            <h2
+              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              data-i18n="contact.title"
+            >
+              Связаться с нами
+            </h2>
+            <p
+              class="text-base"
+              style="color: hsl(var(--muted-foreground))"
+              data-i18n="contact.subtitle"
+            >
+              Оставьте заявку, и мы свяжемся с вами в ближайшее время
+            </p>
+          </div>
+
+          <form
+            id="contactForm"
+            class="reveal card rounded-lg p-8"
+            style="animation-delay: 0.1s"
+          >
+            <div class="mb-6">
+              <label
+                class="block text-sm font-medium mb-2"
+                data-i18n="contact.form.name"
+                >Ваше имя</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                data-i18n-placeholder="contact.form.name_placeholder"
+              />
+            </div>
+
+            <div class="mb-6">
+              <label
+                class="block text-sm font-medium mb-2"
+                data-i18n="contact.form.contact"
+                >Email или телефон</label
+              >
+              <input
+                type="text"
+                id="contact"
+                name="contact"
+                required
+                data-i18n-placeholder="contact.form.contact_placeholder"
+              />
+            </div>
+
+            <div class="mb-6">
+              <label
+                class="block text-sm font-medium mb-2"
+                data-i18n="contact.form.message"
+                >Сообщение</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                data-i18n-placeholder="contact.form.message_placeholder"
+              ></textarea>
+            </div>
+
+            <div class="mb-8">
+              <label class="flex items-start cursor-pointer">
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  name="privacy"
+                  required
+                  class="mt-1 mr-3"
+                />
+                <span
+                  class="text-sm"
+                  style="color: hsl(var(--muted-foreground))"
+                  data-i18n="contact.form.privacy"
+                >
+                  Согласен на обработку персональных данных
+                </span>
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              class="btn-primary w-full justify-center py-3"
+              data-i18n="contact.form.submit"
+            >
+              Отправить заявку
+            </button>
+
+            <div id="formMessage" class="mt-6 text-center hidden"></div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <!-- End Main Content -->
+
+    <script src="/js/app.js"></script>
+    <script>
+      // Scroll reveal animation
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const reveal = () => {
+        revealElements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+
+          if (elementTop < windowHeight - 50) {
+            element.classList.add("active");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", reveal);
+      reveal(); // Initial check
+
+      // ========================================
+      // 1. NAVIGATION PROGRESS BAR
+      // ========================================
+      function updateProgressBar() {
+        const progressBar = document.getElementById("progressBar");
+        const windowHeight = window.innerHeight;
+        const documentHeight =
+          document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+
+        progressBar.style.width = progress + "%";
+      }
+
+      window.addEventListener("scroll", updateProgressBar);
+      updateProgressBar(); // Initial check
+
+      // ========================================
+      // 2. ANIMATED COUNTERS
+      // ========================================
+      function animateCounter(element, target, duration = 2000) {
+        const start = 0;
+        const increment = target / (duration / 16); // 60fps
+        let current = start;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = target + (element.dataset.suffix || "");
+            clearInterval(timer);
+          } else {
+            element.textContent =
+              Math.floor(current) + (element.dataset.suffix || "");
+          }
+        }, 16);
+      }
+
+      function initCounters() {
+        const counters = document.querySelectorAll("[data-counter]");
+        const observerOptions = {
+          threshold: 0.5,
+          rootMargin: "0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+              const target = parseInt(entry.target.dataset.counter);
+              animateCounter(entry.target, target);
+              entry.target.dataset.animated = "true";
+            }
+          });
+        }, observerOptions);
+
+        counters.forEach((counter) => observer.observe(counter));
+      }
+
+      // ========================================
+      // 3. MAGNETIC BUTTONS
+      // ========================================
+      function initMagneticButtons() {
+        const buttons = document.querySelectorAll(".btn-primary");
+
+        buttons.forEach((button) => {
+          button.addEventListener("mousemove", (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            const moveX = x * 0.3;
+            const moveY = y * 0.3;
+
+            button.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+
+          button.addEventListener("mouseleave", () => {
+            button.style.transform = "translate(0px, 0px)";
+          });
+        });
+      }
+
+      // ========================================
+      // 4. IMPROVED FAQ ANIMATIONS
+      // ========================================
+      function initEnhancedFAQ() {
+        const faqButtons = document.querySelectorAll(".faq-question");
+
+        faqButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const answer = this.nextElementSibling;
+            const icon = this.querySelector("svg");
+            const isClosed = answer.classList.contains("faq-closed");
+
+            // Close all other FAQs
+            faqButtons.forEach((otherButton) => {
+              if (otherButton !== button) {
+                const otherAnswer = otherButton.nextElementSibling;
+                const otherIcon = otherButton.querySelector("svg");
+
+                if (!otherAnswer.classList.contains("faq-closed")) {
+                  otherAnswer.style.maxHeight = otherAnswer.scrollHeight + "px";
+                  requestAnimationFrame(() => {
+                    otherAnswer.classList.add("faq-closed");
+                    otherAnswer.style.maxHeight = "";
+                  });
+                  otherIcon.style.transform = "rotate(0deg)";
+                }
+              }
+            });
+
+            // Toggle current FAQ
+            if (isClosed) {
+              // Opening
+              answer.classList.remove("faq-closed");
+              answer.style.maxHeight = answer.scrollHeight + "px";
+              icon.style.transform = "rotate(180deg)";
+
+              // After animation, remove inline style to allow responsive height
+              setTimeout(() => {
+                answer.style.maxHeight = "none";
+              }, 300);
+            } else {
+              // Closing
+              answer.style.maxHeight = answer.scrollHeight + "px";
+              requestAnimationFrame(() => {
+                answer.classList.add("faq-closed");
+                answer.style.maxHeight = "";
+              });
+              icon.style.transform = "rotate(0deg)";
+            }
+          });
+        });
+      }
+
+      // ========================================
+      // 5. INTERACTIVE BACKGROUND
+      // ========================================
+      function initInteractiveBackground() {
+        const interactiveBg = document.getElementById("interactiveBg");
+        const cursorGradient = document.getElementById("cursorGradient");
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        // Track mouse position
+        document.addEventListener("mousemove", (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        // Smooth cursor gradient following
+        function updateCursorGradient() {
+          // Smooth interpolation
+          currentX += (mouseX - currentX) * 0.1;
+          currentY += (mouseY - currentY) * 0.1;
+
+          cursorGradient.style.transform = `translate(${currentX - 300}px, ${
+            currentY - 300
+          }px)`;
+
+          requestAnimationFrame(updateCursorGradient);
+        }
+
+        // Parallax effect on background blobs
+        document.addEventListener("mousemove", (e) => {
+          const moveX = (e.clientX / window.innerWidth - 0.5) * 50;
+          const moveY = (e.clientY / window.innerHeight - 0.5) * 50;
+
+          if (interactiveBg) {
+            interactiveBg.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          }
+        });
+
+        updateCursorGradient();
+      }
+
+      // ========================================
+      // 6. PROPER STACKED CARDS EFFECT
+      // ========================================
+      function initStackedCards() {
+        const sections = document.querySelectorAll("section");
+        const stackOffset = 2; // Very small offset for subtle stacking effect
+
+        sections.forEach((section, index) => {
+          section.classList.add("card-section");
+
+          // Sections stick at top of viewport (behind semi-transparent header)
+          // Small offset creates subtle layering: 0px, 2px, 4px, 6px...
+          const topPosition = index * stackOffset;
+          section.style.top = `${topPosition}px`;
+
+          // Z-index: LATER sections should be ON TOP (higher z-index)
+          // So they cover earlier sections when scrolling
+          // But all sections should be BELOW header (z-100)
+          section.style.zIndex = index + 1;
+        });
+
+        // Add scale and hide effects as sections scroll
+        let ticking = false;
+
+        function updateStackEffect() {
+          sections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            const topPosition = index * stackOffset;
+
+            // Check if next section is approaching
+            if (index < sections.length - 1) {
+              const nextSection = sections[index + 1];
+              const nextRect = nextSection.getBoundingClientRect();
+              const nextTop = (index + 1) * stackOffset;
+
+              // When next section reaches or passes its sticky position
+              if (nextRect.top <= nextTop + 5) {
+                // Hide/push up the current section
+                const pushDistance = nextTop - nextRect.top;
+                section.style.transform = `translateY(-${Math.min(
+                  pushDistance,
+                  100
+                )}px) scale(0.95)`;
+                section.style.opacity = Math.max(0, 1 - pushDistance / 100);
+              } else {
+                // Calculate distance until next section reaches its position
+                const distance = nextRect.top - nextTop;
+
+                // When next section gets close, scale down current section
+                if (distance < 300 && rect.top <= topPosition + 10) {
+                  const progress = 1 - distance / 300;
+                  const scale = 1 - progress * 0.05;
+                  section.style.transform = `scale(${Math.max(scale, 0.95)})`;
+                  section.style.opacity = 1;
+                } else {
+                  section.style.transform = "scale(1)";
+                  section.style.opacity = 1;
+                }
+              }
+            } else {
+              // Last section - always visible
+              section.style.transform = "scale(1)";
+              section.style.opacity = 1;
+            }
+          });
+
+          ticking = false;
+        }
+
+        function onScroll() {
+          if (!ticking) {
+            requestAnimationFrame(updateStackEffect);
+            ticking = true;
+          }
+        }
+
+        window.addEventListener("scroll", onScroll);
+        updateStackEffect(); // Initial call
+      }
+
+      // Initialize all interactive features on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        initCounters();
+        initMagneticButtons();
+        initEnhancedFAQ();
+        initInteractiveBackground();
+        initStackedCards();
+      });
+    </script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="fixed bottom-0 left-0 right-0 md:left-24 z-[10000] p-6 hidden">
+      <div class="max-w-4xl mx-auto card rounded-lg p-6 md:p-8">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="flex-1">
+            <h3 class="text-lg font-display font-bold mb-2" data-i18n="cookies.title">
+              Мы используем cookies
+            </h3>
+            <p class="text-sm" style="color: hsl(var(--muted-foreground))" data-i18n="cookies.description">
+              Этот сайт использует cookies для улучшения вашего опыта и аналитики. Продолжая использовать сайт, вы соглашаетесь с нашей политикой конфиденциальности.
+            </p>
+          </div>
+          <div class="flex gap-3 flex-shrink-0">
+            <button id="cookieReject" class="btn-secondary text-sm" data-i18n="cookies.reject">
+              Отклонить
+            </button>
+            <button id="cookieAccept" class="btn-primary text-sm" data-i18n="cookies.accept">
+              Принять
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookie Consent Script -->
+    <script>
+      // Cookie consent management
+      const cookieConsent = {
+        key: 'digagru_cookie_consent',
+        banner: null,
+
+        init() {
+          this.banner = document.getElementById('cookieConsent');
+          const consent = this.getConsent();
+
+          if (consent === null) {
+            this.showBanner();
+          } else if (consent === 'accepted') {
+            this.enableAnalytics();
+          }
+
+          // Event listeners
+          document.getElementById('cookieAccept')?.addEventListener('click', () => this.accept());
+          document.getElementById('cookieReject')?.addEventListener('click', () => this.reject());
+        },
+
+        showBanner() {
+          if (this.banner) {
+            this.banner.classList.remove('hidden');
+            // Animate in
+            setTimeout(() => {
+              this.banner.style.opacity = '0';
+              this.banner.style.transform = 'translateY(20px)';
+              this.banner.style.transition = 'all 0.3s ease-out';
+              setTimeout(() => {
+                this.banner.style.opacity = '1';
+                this.banner.style.transform = 'translateY(0)';
+              }, 10);
+            }, 100);
+          }
+        },
+
+        hideBanner() {
+          if (this.banner) {
+            this.banner.style.opacity = '0';
+            this.banner.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              this.banner.classList.add('hidden');
+            }, 300);
+          }
+        },
+
+        accept() {
+          this.setConsent('accepted');
+          this.hideBanner();
+          this.enableAnalytics();
+        },
+
+        reject() {
+          this.setConsent('rejected');
+          this.hideBanner();
+        },
+
+        getConsent() {
+          const consent = localStorage.getItem(this.key);
+          return consent;
+        },
+
+        setConsent(value) {
+          localStorage.setItem(this.key, value);
+          // Also set a cookie for server-side tracking
+          document.cookie = `${this.key}=${value}; path=/; max-age=31536000; SameSite=Lax`;
+        },
+
+        enableAnalytics() {
+          // Initialize Google Analytics or your analytics solution
+          console.log('Analytics enabled');
+
+          // Example: Google Analytics (GA4)
+          // Uncomment and add your GA4 Measurement ID
+          /*
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XXXXXXXXXX');
+
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+          document.head.appendChild(script);
+          */
+
+          // Simple custom analytics
+          this.trackPageView();
+        },
+
+        trackPageView() {
+          // Custom analytics tracking
+          const pageData = {
+            url: window.location.href,
+            title: document.title,
+            referrer: document.referrer,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            language: navigator.language
+          };
+
+          console.log('Page view tracked:', pageData);
+
+          // You can send this to your backend
+          // fetch('/api/analytics/pageview', {
+          //   method: 'POST',
+          //   headers: { 'Content-Type': 'application/json' },
+          //   body: JSON.stringify(pageData)
+          // });
+        },
+
+        trackEvent(eventName, eventData = {}) {
+          if (this.getConsent() !== 'accepted') return;
+
+          const data = {
+            event: eventName,
+            ...eventData,
+            timestamp: new Date().toISOString()
+          };
+
+          console.log('Event tracked:', data);
+
+          // Send to backend
+          // fetch('/api/analytics/event', {
+          //   method: 'POST',
+          //   headers: { 'Content-Type': 'application/json' },
+          //   body: JSON.stringify(data)
+          // });
+        }
+      };
+
+      // Initialize cookie consent on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        cookieConsent.init();
+      });
+
+      // Track form submissions
+      document.querySelector('#contactForm')?.addEventListener('submit', (e) => {
+        cookieConsent.trackEvent('form_submit', {
+          form: 'contact'
+        });
+      });
+    </script>
+  </body>
+</html>
