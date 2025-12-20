@@ -44,6 +44,7 @@
     </script>
 
     <style>
+      /* Calculator Responsive Update v7 - Compact features checkboxes */
       :root {
         /* Neo-Brutalist Light Mode - Bold & Vibrant */
         --background: 0 0% 98%;
@@ -197,15 +198,33 @@
       /* Checkbox and Radio special styling */
       input[type="checkbox"],
       input[type="radio"] {
-        width: 24px;
-        height: 24px;
-        border: 3px solid hsl(var(--border));
+        width: 18px;
+        height: 18px;
+        border: 2px solid hsl(var(--border));
         border-radius: 0;
         cursor: pointer;
         appearance: none;
         background-color: hsl(var(--background));
         transition: all 0.2s ease;
         flex-shrink: 0;
+      }
+
+      @media (min-width: 640px) {
+        input[type="checkbox"],
+        input[type="radio"] {
+          width: 20px;
+          height: 20px;
+          border: 2.5px solid hsl(var(--border));
+        }
+      }
+
+      @media (min-width: 768px) {
+        input[type="checkbox"],
+        input[type="radio"] {
+          width: 24px;
+          height: 24px;
+          border: 3px solid hsl(var(--border));
+        }
       }
 
       input[type="radio"] {
@@ -224,8 +243,22 @@
         text-align: center;
         color: white;
         font-weight: bold;
-        font-size: 16px;
-        line-height: 18px;
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      @media (min-width: 640px) {
+        input[type="checkbox"]:checked::after {
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        input[type="checkbox"]:checked::after {
+          font-size: 16px;
+          line-height: 18px;
+        }
       }
 
       /* Calculator button styling */
@@ -234,28 +267,78 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.25rem;
-        padding: 0.75rem 1.5rem;
-        border: 3px solid hsl(var(--foreground));
+        gap: 0.0625rem;
+        padding: 0 0.5rem;
+        border: 1.5px solid hsl(var(--foreground));
         border-radius: 0;
         background-color: transparent;
         color: hsl(var(--foreground));
-        box-shadow: 6px 6px 0 hsl(var(--foreground));
+        box-shadow: 2px 2px 0 hsl(var(--foreground));
         transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-        min-height: 80px;
+        min-height: 32px;
+        font-size: 0.8125rem;
+      }
+
+      @media (min-width: 640px) {
+        .calc-btn {
+          gap: 0.125rem;
+          padding: 0 1rem;
+          border: 2.5px solid hsl(var(--foreground));
+          box-shadow: 4px 4px 0 hsl(var(--foreground));
+          min-height: 42px;
+          font-size: 0.9375rem;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .calc-btn {
+          padding: 0 1.25rem;
+          border: 2.5px solid hsl(var(--foreground));
+          box-shadow: 5px 5px 0 hsl(var(--foreground));
+          min-height: 48px;
+          font-size: 0.95rem;
+        }
       }
 
       .calc-option input[type="radio"]:checked + .calc-btn {
         background-color: hsl(var(--primary));
         color: hsl(var(--primary-foreground));
         border-color: hsl(var(--foreground));
-        transform: translate(-2px, -2px);
-        box-shadow: 8px 8px 0 hsl(var(--foreground));
+        transform: translate(-0.5px, -0.5px);
+        box-shadow: 2.5px 2.5px 0 hsl(var(--foreground));
+      }
+
+      @media (min-width: 640px) {
+        .calc-option input[type="radio"]:checked + .calc-btn {
+          transform: translate(-1.5px, -1.5px);
+          box-shadow: 5.5px 5.5px 0 hsl(var(--foreground));
+        }
+      }
+
+      @media (min-width: 768px) {
+        .calc-option input[type="radio"]:checked + .calc-btn {
+          transform: translate(-1.5px, -1.5px);
+          box-shadow: 6.5px 6.5px 0 hsl(var(--foreground));
+        }
       }
 
       .calc-btn:hover {
-        transform: translate(-1px, -1px);
-        box-shadow: 7px 7px 0 hsl(var(--foreground));
+        transform: translate(-0.25px, -0.25px);
+        box-shadow: 2.25px 2.25px 0 hsl(var(--foreground));
+      }
+
+      @media (min-width: 640px) {
+        .calc-btn:hover {
+          transform: translate(-0.75px, -0.75px);
+          box-shadow: 4.75px 4.75px 0 hsl(var(--foreground));
+        }
+      }
+
+      @media (min-width: 768px) {
+        .calc-btn:hover {
+          transform: translate(-1px, -1px);
+          box-shadow: 6px 6px 0 hsl(var(--foreground));
+        }
       }
 
       input:focus,
@@ -1527,19 +1610,19 @@
       <!-- Calculator Section -->
       <section
         id="calculator"
-        class="py-16 px-6 lg:px-8"
+        class="py-8 sm:py-12 md:py-16 px-3 sm:px-4 md:px-6 lg:px-8"
         style="background-color: hsl(var(--muted))"
       >
-        <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-8 reveal">
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center mb-4 sm:mb-6 md:mb-8 reveal">
             <h2
-              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-2 sm:mb-3 md:mb-4"
               data-i18n="calculator.title"
             >
               Калькулятор стоимости
             </h2>
             <p
-              class="text-base"
+              class="text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]"
               style="color: hsl(var(--muted-foreground))"
               data-i18n="calculator.subtitle"
             >
@@ -1548,18 +1631,18 @@
           </div>
 
           <div
-            class="reveal card p-6"
+            class="reveal card p-3 sm:p-4 md:p-5 lg:p-6"
             style="animation-delay: 0.1s; overflow-y: auto"
           >
             <form id="calculatorForm">
               <!-- Project Type -->
-              <div class="mb-5">
+              <div class="mb-3 sm:mb-4 md:mb-5">
                 <label
-                  class="block text-sm font-semibold mb-3"
+                  class="block text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 md:mb-3"
                   data-i18n="calculator.project_type"
                   >Тип проекта</label
                 >
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1.5 sm:gap-2 md:gap-3">
                   <label class="calc-option cursor-pointer">
                     <input
                       type="radio"
@@ -1570,10 +1653,10 @@
                       class="hidden"
                     />
                     <div class="calc-btn">
-                      <span class="font-bold" data-i18n="calculator.landing"
+                      <span class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]" data-i18n="calculator.landing"
                         >Лендинг</span
                       >
-                      <span class="text-xs opacity-80">от 30 000₽</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">от 30 000₽</span>
                     </div>
                   </label>
                   <label class="calc-option cursor-pointer">
@@ -1585,10 +1668,10 @@
                       class="hidden"
                     />
                     <div class="calc-btn">
-                      <span class="font-bold" data-i18n="calculator.corporate"
+                      <span class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]" data-i18n="calculator.corporate"
                         >Корпоративный сайт</span
                       >
-                      <span class="text-xs opacity-80">от 80 000₽</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">от 80 000₽</span>
                     </div>
                   </label>
                   <label class="calc-option cursor-pointer">
@@ -1600,23 +1683,23 @@
                       class="hidden"
                     />
                     <div class="calc-btn">
-                      <span class="font-bold" data-i18n="calculator.ecommerce"
+                      <span class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]" data-i18n="calculator.ecommerce"
                         >Интернет-магазин</span
                       >
-                      <span class="text-xs opacity-80">от 150 000₽</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">от 150 000₽</span>
                     </div>
                   </label>
                 </div>
               </div>
 
               <!-- Pages -->
-              <div class="mb-5">
+              <div class="mb-3 sm:mb-4 md:mb-5">
                 <label
-                  class="block text-sm font-semibold mb-3"
+                  class="block text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 md:mb-3"
                   data-i18n="calculator.pages"
                   >Количество страниц</label
                 >
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-1.5 sm:gap-2 md:gap-3">
                   <label class="calc-option cursor-pointer">
                     <input
                       type="radio"
@@ -1627,7 +1710,7 @@
                       class="hidden"
                     />
                     <div class="calc-btn">
-                      <span class="font-bold">1-5</span>
+                      <span class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]">1-5</span>
                     </div>
                   </label>
                   <label class="calc-option cursor-pointer">
@@ -1639,8 +1722,8 @@
                       class="hidden"
                     />
                     <div class="calc-btn">
-                      <span class="font-bold">6-10</span>
-                      <span class="text-xs opacity-80">+15 000₽</span>
+                      <span class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]">6-10</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">+15 000₽</span>
                     </div>
                   </label>
                   <label class="calc-option cursor-pointer">
@@ -1652,8 +1735,8 @@
                       class="hidden"
                     />
                     <div class="calc-btn">
-                      <span class="font-bold">11-20</span>
-                      <span class="text-xs opacity-80">+30 000₽</span>
+                      <span class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]">11-20</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">+30 000₽</span>
                     </div>
                   </label>
                   <label class="calc-option cursor-pointer">
@@ -1665,21 +1748,21 @@
                       class="hidden"
                     />
                     <div class="calc-btn">
-                      <span class="font-bold">20+</span>
-                      <span class="text-xs opacity-80">+50 000₽</span>
+                      <span class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]">20+</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">+50 000₽</span>
                     </div>
                   </label>
                 </div>
               </div>
 
               <!-- Design -->
-              <div class="mb-5">
+              <div class="mb-3 sm:mb-4 md:mb-5">
                 <label
-                  class="block text-sm font-semibold mb-3"
+                  class="block text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 md:mb-3"
                   data-i18n="calculator.design"
                   >Сложность дизайна</label
                 >
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1.5 sm:gap-2 md:gap-3">
                   <label class="calc-option cursor-pointer">
                     <input
                       type="radio"
@@ -1691,12 +1774,12 @@
                     />
                     <div class="calc-btn">
                       <span
-                        class="font-bold"
+                        class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]"
                         data-i18n="calculator.design_basic"
                         >Базовый</span
                       >
                       <span
-                        class="text-xs opacity-80"
+                        class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80"
                         data-i18n="calculator.design_basic_desc"
                         >Готовый шаблон</span
                       >
@@ -1712,11 +1795,11 @@
                     />
                     <div class="calc-btn">
                       <span
-                        class="font-bold"
+                        class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]"
                         data-i18n="calculator.design_custom"
                         >Кастомный</span
                       >
-                      <span class="text-xs opacity-80">+40 000₽</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">+40 000₽</span>
                     </div>
                   </label>
                   <label class="calc-option cursor-pointer">
@@ -1729,110 +1812,110 @@
                     />
                     <div class="calc-btn">
                       <span
-                        class="font-bold"
+                        class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]"
                         data-i18n="calculator.design_premium"
                         >Премиум</span
                       >
-                      <span class="text-xs opacity-80">+80 000₽</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">+80 000₽</span>
                     </div>
                   </label>
                 </div>
               </div>
 
               <!-- Features -->
-              <div class="mb-6">
+              <div class="mb-3 sm:mb-4 md:mb-5">
                 <label
-                  class="block text-sm font-semibold mb-3"
+                  class="block text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 md:mb-3"
                   data-i18n="calculator.features"
                   >Дополнительные функции</label
                 >
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 sm:gap-2 md:gap-3">
                   <label
-                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                    class="flex items-center py-0.5 px-1.5 sm:py-1 sm:px-2 md:py-1.5 md:px-2.5 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
                   >
                     <input
                       type="checkbox"
                       name="features"
                       value="seo"
                       data-price="20000"
-                      class="mr-3"
+                      class="mr-1.5 sm:mr-2 md:mr-3"
                     />
-                    <span class="flex-1 text-sm" data-i18n="calculator.feat_seo"
+                    <span class="flex-1 text-[0.6rem] sm:text-[0.65rem] md:text-xs" data-i18n="calculator.feat_seo"
                       >SEO-оптимизация (+20 000₽)</span
                     >
                   </label>
                   <label
-                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                    class="flex items-center py-0.5 px-1.5 sm:py-1 sm:px-2 md:py-1.5 md:px-2.5 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
                   >
                     <input
                       type="checkbox"
                       name="features"
                       value="crm"
                       data-price="30000"
-                      class="mr-3"
+                      class="mr-1.5 sm:mr-2 md:mr-3"
                     />
-                    <span class="flex-1 text-sm" data-i18n="calculator.feat_crm"
+                    <span class="flex-1 text-[0.6rem] sm:text-[0.65rem] md:text-xs" data-i18n="calculator.feat_crm"
                       >Интеграция с CRM (+30 000₽)</span
                     >
                   </label>
                   <label
-                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                    class="flex items-center py-0.5 px-1.5 sm:py-1 sm:px-2 md:py-1.5 md:px-2.5 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
                   >
                     <input
                       type="checkbox"
                       name="features"
                       value="multilang"
                       data-price="25000"
-                      class="mr-3"
+                      class="mr-1.5 sm:mr-2 md:mr-3"
                     />
                     <span
-                      class="flex-1 text-sm"
+                      class="flex-1 text-[0.6rem] sm:text-[0.65rem] md:text-xs"
                       data-i18n="calculator.feat_multilang"
                       >Многоязычность (+25 000₽)</span
                     >
                   </label>
                   <label
-                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                    class="flex items-center py-0.5 px-1.5 sm:py-1 sm:px-2 md:py-1.5 md:px-2.5 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
                   >
                     <input
                       type="checkbox"
                       name="features"
                       value="bot"
                       data-price="40000"
-                      class="mr-3"
+                      class="mr-1.5 sm:mr-2 md:mr-3"
                     />
-                    <span class="flex-1 text-sm" data-i18n="calculator.feat_bot"
+                    <span class="flex-1 text-[0.6rem] sm:text-[0.65rem] md:text-xs" data-i18n="calculator.feat_bot"
                       >Telegram-бот (+40 000₽)</span
                     >
                   </label>
                   <label
-                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                    class="flex items-center py-0.5 px-1.5 sm:py-1 sm:px-2 md:py-1.5 md:px-2.5 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
                   >
                     <input
                       type="checkbox"
                       name="features"
                       value="analytics"
                       data-price="15000"
-                      class="mr-3"
+                      class="mr-1.5 sm:mr-2 md:mr-3"
                     />
                     <span
-                      class="flex-1 text-sm"
+                      class="flex-1 text-[0.6rem] sm:text-[0.65rem] md:text-xs"
                       data-i18n="calculator.feat_analytics"
                       >Веб-аналитика (+15 000₽)</span
                     >
                   </label>
                   <label
-                    class="flex items-center p-3 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
+                    class="flex items-center py-0.5 px-1.5 sm:py-1 sm:px-2 md:py-1.5 md:px-2.5 border rounded-md cursor-pointer hover:bg-[hsl(var(--accent))] transition"
                   >
                     <input
                       type="checkbox"
                       name="features"
                       value="booking"
                       data-price="35000"
-                      class="mr-3"
+                      class="mr-1.5 sm:mr-2 md:mr-3"
                     />
                     <span
-                      class="flex-1 text-sm"
+                      class="flex-1 text-[0.6rem] sm:text-[0.65rem] md:text-xs"
                       data-i18n="calculator.feat_booking"
                       >Система онлайн-записи (+35 000₽)</span
                     >
@@ -1841,13 +1924,13 @@
               </div>
 
               <!-- Support -->
-              <div class="mb-6">
+              <div class="mb-3 sm:mb-4 md:mb-5">
                 <label
-                  class="block text-sm font-semibold mb-3"
+                  class="block text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 md:mb-3"
                   data-i18n="calculator.support"
                   >Техническая поддержка</label
                 >
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-1.5 sm:gap-2 md:gap-3">
                   <label class="calc-option cursor-pointer">
                     <input
                       type="radio"
@@ -1859,7 +1942,7 @@
                     />
                     <div class="calc-btn">
                       <span
-                        class="font-bold"
+                        class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]"
                         data-i18n="calculator.support_none"
                         >Без поддержки</span
                       >
@@ -1874,10 +1957,10 @@
                       class="hidden"
                     />
                     <div class="calc-btn">
-                      <span class="font-bold" data-i18n="calculator.support_3mo"
+                      <span class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]" data-i18n="calculator.support_3mo"
                         >3 месяца</span
                       >
-                      <span class="text-xs opacity-80">+15 000₽</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">+15 000₽</span>
                     </div>
                   </label>
                   <label class="calc-option cursor-pointer">
@@ -1889,10 +1972,10 @@
                       class="hidden"
                     />
                     <div class="calc-btn">
-                      <span class="font-bold" data-i18n="calculator.support_6mo"
+                      <span class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]" data-i18n="calculator.support_6mo"
                         >6 месяцев</span
                       >
-                      <span class="text-xs opacity-80">+25 000₽</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">+25 000₽</span>
                     </div>
                   </label>
                   <label class="calc-option cursor-pointer">
@@ -1905,11 +1988,11 @@
                     />
                     <div class="calc-btn">
                       <span
-                        class="font-bold"
+                        class="font-bold text-[0.525rem] sm:text-[0.6125rem] md:text-[0.7rem]"
                         data-i18n="calculator.support_12mo"
                         >12 месяцев</span
                       >
-                      <span class="text-xs opacity-80">+40 000₽</span>
+                      <span class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] opacity-80">+40 000₽</span>
                     </div>
                   </label>
                 </div>
@@ -1917,11 +2000,11 @@
 
               <!-- Result -->
               <div
-                class="border rounded-md p-6 text-center"
+                class="border rounded-md p-3 sm:p-4 md:p-5 lg:p-6 text-center"
                 style="background-color: hsl(var(--primary) / 0.05)"
               >
                 <div
-                  class="text-xs font-medium mb-2"
+                  class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] font-medium mb-1.5 sm:mb-2"
                   style="color: hsl(var(--muted-foreground))"
                   data-i18n="calculator.estimated_cost"
                 >
@@ -1929,13 +2012,13 @@
                 </div>
                 <div
                   id="calculatorResult"
-                  class="text-3xl font-display font-bold mb-3"
+                  class="text-xl sm:text-2xl md:text-3xl font-display font-bold mb-1.5 sm:mb-2 md:mb-3"
                   style="color: hsl(var(--primary))"
                 >
                   30 000₽
                 </div>
                 <p
-                  class="text-xs"
+                  class="text-[0.3rem] sm:text-[0.325rem] md:text-[0.375rem] leading-relaxed"
                   style="color: hsl(var(--muted-foreground))"
                   data-i18n="calculator.disclaimer"
                 >
