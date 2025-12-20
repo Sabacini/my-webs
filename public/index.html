@@ -26,6 +26,13 @@
       tailwind.config = {
         darkMode: "class",
         theme: {
+          screens: {
+            'sm': '576px',
+            'md': '768px',
+            'lg': '992px',
+            'xl': '1200px',
+            '2xl': '1400px',
+          },
           extend: {
             fontFamily: {
               sans: ["Plus Jakarta Sans", "sans-serif"],
@@ -44,7 +51,7 @@
     </script>
 
     <style>
-      /* Calculator Responsive Update v7 - Compact features checkboxes */
+      /* Responsive Update v8 - Services & Advantages mobile optimization */
       :root {
         /* Neo-Brutalist Light Mode - Bold & Vibrant */
         --background: 0 0% 98%;
@@ -863,7 +870,7 @@
     <div class="mt-16 md:mt-0 md:ml-24">
       <!-- Hero Section -->
       <section
-        class="relative py-24 px-6 lg:px-8 overflow-hidden min-h-[600px] flex items-center justify-center"
+        class="relative py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10 overflow-hidden min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[600px] xl:min-h-[650px] flex items-center justify-center"
       >
         <!-- Background Image -->
         <div class="absolute inset-0 z-0 hero-bg">
@@ -891,7 +898,7 @@
         <div class="max-w-7xl mx-auto relative z-10 w-full text-center">
           <div>
             <h1
-              class="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6 hero-title"
+              class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-display font-bold leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6 hero-title"
             >
               <span data-i18n="hero.line1">Сайты,</span>
               <span data-i18n="hero.line2">которые</span>
@@ -900,13 +907,13 @@
               >
             </h1>
             <p
-              class="text-lg md:text-xl mb-10 mx-auto max-w-2xl hero-subtitle"
+              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-7 md:mb-8 lg:mb-10 mx-auto max-w-2xl hero-subtitle"
               style="color: hsl(var(--muted-foreground))"
               data-i18n="hero.subtitle"
             >
               Полный цикл разработки и продвижения для малого бизнеса
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center hero-cta">
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center hero-cta">
               <a href="#contact" class="btn-primary" data-i18n="hero.cta">
                 <span>Оставить заявку</span>
                 <svg
@@ -938,25 +945,25 @@
       <!-- About Section -->
       <section
         id="about"
-        class="py-24 px-6 lg:px-8"
+        class="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-5 md:px-6 lg:px-8"
         style="background-color: hsl(var(--muted))"
       >
         <div class="max-w-7xl mx-auto">
-          <div class="grid lg:grid-cols-5 gap-12 items-start">
+          <div class="grid lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start">
             <div class="lg:col-span-2 reveal">
               <h2
-                class="text-4xl md:text-5xl font-display font-bold mb-4"
+                class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-2 sm:mb-3 md:mb-4"
                 data-i18n="about.title"
               >
                 О нас
               </h2>
             </div>
             <div
-              class="lg:col-span-3 space-y-4 reveal accent-border pl-4"
+              class="lg:col-span-3 space-y-3 sm:space-y-4 reveal accent-border pl-2 sm:pl-3 md:pl-4"
               style="animation-delay: 0.1s"
             >
               <p
-                class="text-base leading-relaxed"
+                class="text-sm sm:text-base md:text-lg leading-relaxed"
                 style="color: hsl(var(--muted-foreground))"
                 data-i18n="about.text1"
               >
@@ -966,7 +973,7 @@
                 поэтому предлагаем оптимальные решения без переплат.
               </p>
               <p
-                class="text-base leading-relaxed"
+                class="text-sm sm:text-base md:text-lg leading-relaxed"
                 style="color: hsl(var(--muted-foreground))"
                 data-i18n="about.text2"
               >
@@ -977,13 +984,13 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12 lg:mt-16">
             <div
-              class="reveal card rounded-lg p-8 text-center"
+              class="reveal card rounded-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center"
               style="animation-delay: 0.2s"
             >
               <div
-                class="text-4xl font-display font-bold mb-2"
+                class="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2"
                 style="color: hsl(var(--primary))"
                 data-counter="5"
                 data-suffix="+"
@@ -991,7 +998,7 @@
                 0+
               </div>
               <p
-                class="text-sm"
+                class="text-xs sm:text-sm"
                 style="color: hsl(var(--muted-foreground))"
                 data-i18n="about.stat1"
               >
@@ -999,11 +1006,11 @@
               </p>
             </div>
             <div
-              class="reveal card rounded-lg p-8 text-center"
+              class="reveal card rounded-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center"
               style="animation-delay: 0.3s"
             >
               <div
-                class="text-4xl font-display font-bold mb-2"
+                class="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2"
                 style="color: hsl(var(--primary))"
                 data-counter="50"
                 data-suffix="+"
@@ -1011,7 +1018,7 @@
                 0+
               </div>
               <p
-                class="text-sm"
+                class="text-xs sm:text-sm"
                 style="color: hsl(var(--muted-foreground))"
                 data-i18n="about.stat2"
               >
@@ -1019,11 +1026,11 @@
               </p>
             </div>
             <div
-              class="reveal card rounded-lg p-8 text-center"
+              class="reveal card rounded-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center"
               style="animation-delay: 0.4s"
             >
               <div
-                class="text-4xl font-display font-bold mb-2"
+                class="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2"
                 style="color: hsl(var(--primary))"
                 data-counter="100"
                 data-suffix="%"
@@ -1031,7 +1038,7 @@
                 0%
               </div>
               <p
-                class="text-sm"
+                class="text-xs sm:text-sm"
                 style="color: hsl(var(--muted-foreground))"
                 data-i18n="about.stat3"
               >
@@ -1043,17 +1050,17 @@
       </section>
 
       <!-- Services Section -->
-      <section id="services" class="py-24 px-6 lg:px-8">
+      <section id="services" class="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-16 reveal max-w-2xl mx-auto">
+          <div class="text-center mb-8 sm:mb-12 md:mb-16 reveal max-w-2xl mx-auto">
             <h2
-              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-3 sm:mb-4"
               data-i18n="services.title"
             >
               Наши услуги
             </h2>
             <p
-              class="text-base"
+              class="text-sm sm:text-base"
               style="color: hsl(var(--muted-foreground))"
               data-i18n="services.subtitle"
             >
@@ -1061,10 +1068,10 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
             <!-- Service 1 -->
             <div
-              class="reveal card rounded-lg p-6"
+              class="reveal card rounded-lg p-4 sm:p-5 md:p-6"
               style="animation-delay: 0.1s"
             >
               <div
@@ -1133,7 +1140,7 @@
 
             <!-- Service 2 -->
             <div
-              class="reveal card rounded-lg p-6"
+              class="reveal card rounded-lg p-4 sm:p-5 md:p-6"
               style="animation-delay: 0.2s"
             >
               <div
@@ -1201,7 +1208,7 @@
 
             <!-- Service 3 -->
             <div
-              class="reveal card rounded-lg p-6"
+              class="reveal card rounded-lg p-4 sm:p-5 md:p-6"
               style="animation-delay: 0.3s"
             >
               <div
@@ -1275,7 +1282,7 @@
 
             <!-- Service 4 -->
             <div
-              class="reveal card rounded-lg p-6"
+              class="reveal card rounded-lg p-4 sm:p-5 md:p-6"
               style="animation-delay: 0.4s"
             >
               <div
@@ -1341,7 +1348,7 @@
 
             <!-- Service 5 -->
             <div
-              class="reveal card rounded-lg p-6"
+              class="reveal card rounded-lg p-4 sm:p-5 md:p-6"
               style="animation-delay: 0.5s"
             >
               <div
@@ -1405,7 +1412,7 @@
 
             <!-- Service 6 -->
             <div
-              class="reveal card rounded-lg p-6"
+              class="reveal card rounded-lg p-4 sm:p-5 md:p-6"
               style="animation-delay: 0.6s"
             >
               <div
@@ -1477,22 +1484,22 @@
       <!-- Advantages Section -->
       <section
         id="advantages"
-        class="py-24 px-6 lg:px-8"
+        class="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8"
         style="background-color: hsl(var(--muted))"
       >
         <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-16 reveal max-w-2xl mx-auto">
+          <div class="text-center mb-8 sm:mb-12 md:mb-16 reveal max-w-2xl mx-auto">
             <h2
-              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-3 sm:mb-4"
               data-i18n="advantages.title"
             >
               Наши преимущества
             </h2>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
             <div
-              class="reveal card rounded-lg px-6 pt-8 pb-12 text-center min-h-[280px] flex flex-col justify-start"
+              class="reveal card rounded-lg px-4 pt-6 pb-8 sm:px-5 sm:pt-7 sm:pb-10 md:px-6 md:pt-8 md:pb-12 text-center min-h-[200px] sm:min-h-[240px] md:min-h-[280px] flex flex-col justify-start"
               style="animation-delay: 0.1s"
             >
               <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: hsl(var(--primary) / 0.1);">
@@ -1515,7 +1522,7 @@
               </p>
             </div>
             <div
-              class="reveal card rounded-lg px-6 pt-8 pb-12 text-center min-h-[280px] flex flex-col justify-start"
+              class="reveal card rounded-lg px-4 pt-6 pb-8 sm:px-5 sm:pt-7 sm:pb-10 md:px-6 md:pt-8 md:pb-12 text-center min-h-[200px] sm:min-h-[240px] md:min-h-[280px] flex flex-col justify-start"
               style="animation-delay: 0.2s"
             >
               <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: hsl(var(--secondary) / 0.1);">
@@ -1538,7 +1545,7 @@
               </p>
             </div>
             <div
-              class="reveal card rounded-lg px-6 pt-8 pb-12 text-center min-h-[280px] flex flex-col justify-start"
+              class="reveal card rounded-lg px-4 pt-6 pb-8 sm:px-5 sm:pt-7 sm:pb-10 md:px-6 md:pt-8 md:pb-12 text-center min-h-[200px] sm:min-h-[240px] md:min-h-[280px] flex flex-col justify-start"
               style="animation-delay: 0.3s"
             >
               <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: hsl(var(--accent) / 0.1);">
@@ -1561,7 +1568,7 @@
               </p>
             </div>
             <div
-              class="reveal card rounded-lg px-6 pt-8 pb-12 text-center min-h-[280px] flex flex-col justify-start"
+              class="reveal card rounded-lg px-4 pt-6 pb-8 sm:px-5 sm:pt-7 sm:pb-10 md:px-6 md:pt-8 md:pb-12 text-center min-h-[200px] sm:min-h-[240px] md:min-h-[280px] flex flex-col justify-start"
               style="animation-delay: 0.4s"
             >
               <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: hsl(var(--pink) / 0.1);">
@@ -1588,11 +1595,11 @@
       </section>
 
       <!-- Testimonials Section -->
-      <section id="testimonials" class="py-24 px-6 lg:px-8">
+      <section id="testimonials" class="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-5 md:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-16 reveal max-w-2xl mx-auto">
+          <div class="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 reveal max-w-2xl mx-auto">
             <h2
-              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-2 sm:mb-3 md:mb-4"
               data-i18n="testimonials.title"
             >
               Отзывы клиентов
@@ -1600,7 +1607,7 @@
           </div>
           <div
             id="testimonialsContainer"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6"
           >
             <!-- Testimonials will be loaded dynamically -->
           </div>
@@ -2032,31 +2039,31 @@
       </section>
 
       <!-- FAQ Section -->
-      <section id="faq" class="py-24 px-6 lg:px-8">
+      <section id="faq" class="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-5 md:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-16 reveal">
+          <div class="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 reveal">
             <h2
-              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-2 sm:mb-3 md:mb-4"
               data-i18n="faq.title"
             >
               Часто задаваемые вопросы
             </h2>
           </div>
 
-          <div class="space-y-4">
+          <div class="space-y-2 sm:space-y-3 md:space-y-4">
             <!-- FAQ Item 1 -->
             <div
               class="reveal card rounded-lg overflow-hidden"
               style="animation-delay: 0.1s"
             >
               <button
-                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+                class="faq-question w-full text-left p-3 sm:p-4 md:p-5 lg:p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
               >
-                <span class="font-medium text-sm pr-8" data-i18n="faq.q1"
+                <span class="font-medium text-xs sm:text-sm pr-8" data-i18n="faq.q1"
                   >Сколько времени занимает разработка сайта?</span
                 >
                 <svg
-                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  class="w-4 h-4 sm:w-5 sm:h-5 transform transition-transform flex-shrink-0"
                   style="color: hsl(var(--muted-foreground))"
                   fill="none"
                   stroke="currentColor"
@@ -2070,9 +2077,9 @@
                   ></path>
                 </svg>
               </button>
-              <div class="faq-answer faq-closed px-6 pb-6">
+              <div class="faq-answer faq-closed px-3 sm:px-4 md:px-5 lg:px-6 pb-3 sm:pb-4 md:pb-5 lg:pb-6">
                 <p
-                  class="text-sm"
+                  class="text-xs sm:text-sm"
                   style="color: hsl(var(--muted-foreground))"
                   data-i18n="faq.a1"
                 >
@@ -2089,13 +2096,13 @@
               style="animation-delay: 0.2s"
             >
               <button
-                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+                class="faq-question w-full text-left p-3 sm:p-4 md:p-5 lg:p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
               >
-                <span class="font-medium text-sm pr-8" data-i18n="faq.q2"
+                <span class="font-medium text-xs sm:text-sm pr-8" data-i18n="faq.q2"
                   >Что входит в стоимость?</span
                 >
                 <svg
-                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  class="w-4 h-4 sm:w-5 sm:h-5 transform transition-transform flex-shrink-0"
                   style="color: hsl(var(--muted-foreground))"
                   fill="none"
                   stroke="currentColor"
@@ -2109,9 +2116,9 @@
                   ></path>
                 </svg>
               </button>
-              <div class="faq-answer faq-closed px-6 pb-6">
+              <div class="faq-answer faq-closed px-3 sm:px-4 md:px-5 lg:px-6 pb-3 sm:pb-4 md:pb-5 lg:pb-6">
                 <p
-                  class="text-sm"
+                  class="text-xs sm:text-sm"
                   style="color: hsl(var(--muted-foreground))"
                   data-i18n="faq.a2"
                 >
@@ -2128,13 +2135,13 @@
               style="animation-delay: 0.3s"
             >
               <button
-                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+                class="faq-question w-full text-left p-3 sm:p-4 md:p-5 lg:p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
               >
-                <span class="font-medium text-sm pr-8" data-i18n="faq.q3"
+                <span class="font-medium text-xs sm:text-sm pr-8" data-i18n="faq.q3"
                   >Нужно ли мне готовить контент?</span
                 >
                 <svg
-                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  class="w-4 h-4 sm:w-5 sm:h-5 transform transition-transform flex-shrink-0"
                   style="color: hsl(var(--muted-foreground))"
                   fill="none"
                   stroke="currentColor"
@@ -2148,9 +2155,9 @@
                   ></path>
                 </svg>
               </button>
-              <div class="faq-answer faq-closed px-6 pb-6">
+              <div class="faq-answer faq-closed px-3 sm:px-4 md:px-5 lg:px-6 pb-3 sm:pb-4 md:pb-5 lg:pb-6">
                 <p
-                  class="text-sm"
+                  class="text-xs sm:text-sm"
                   style="color: hsl(var(--muted-foreground))"
                   data-i18n="faq.a3"
                 >
@@ -2167,13 +2174,13 @@
               style="animation-delay: 0.4s"
             >
               <button
-                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+                class="faq-question w-full text-left p-3 sm:p-4 md:p-5 lg:p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
               >
-                <span class="font-medium text-sm pr-8" data-i18n="faq.q4"
+                <span class="font-medium text-xs sm:text-sm pr-8" data-i18n="faq.q4"
                   >Какая система управления используется?</span
                 >
                 <svg
-                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  class="w-4 h-4 sm:w-5 sm:h-5 transform transition-transform flex-shrink-0"
                   style="color: hsl(var(--muted-foreground))"
                   fill="none"
                   stroke="currentColor"
@@ -2187,9 +2194,9 @@
                   ></path>
                 </svg>
               </button>
-              <div class="faq-answer faq-closed px-6 pb-6">
+              <div class="faq-answer faq-closed px-3 sm:px-4 md:px-5 lg:px-6 pb-3 sm:pb-4 md:pb-5 lg:pb-6">
                 <p
-                  class="text-sm"
+                  class="text-xs sm:text-sm"
                   style="color: hsl(var(--muted-foreground))"
                   data-i18n="faq.a4"
                 >
@@ -2206,13 +2213,13 @@
               style="animation-delay: 0.5s"
             >
               <button
-                class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
+                class="faq-question w-full text-left p-3 sm:p-4 md:p-5 lg:p-6 flex justify-between items-center hover:bg-[hsl(var(--accent))] transition"
               >
-                <span class="font-medium text-sm pr-8" data-i18n="faq.q5"
+                <span class="font-medium text-xs sm:text-sm pr-8" data-i18n="faq.q5"
                   >Как происходит оплата?</span
                 >
                 <svg
-                  class="w-5 h-5 transform transition-transform flex-shrink-0"
+                  class="w-4 h-4 sm:w-5 sm:h-5 transform transition-transform flex-shrink-0"
                   style="color: hsl(var(--muted-foreground))"
                   fill="none"
                   stroke="currentColor"
@@ -2226,9 +2233,9 @@
                   ></path>
                 </svg>
               </button>
-              <div class="faq-answer faq-closed px-6 pb-6">
+              <div class="faq-answer faq-closed px-3 sm:px-4 md:px-5 lg:px-6 pb-3 sm:pb-4 md:pb-5 lg:pb-6">
                 <p
-                  class="text-sm"
+                  class="text-xs sm:text-sm"
                   style="color: hsl(var(--muted-foreground))"
                   data-i18n="faq.a5"
                 >
@@ -2245,19 +2252,19 @@
       <!-- Contact Section -->
       <section
         id="contact"
-        class="py-24 px-6 lg:px-8 border-b-[3px]"
+        class="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-5 md:px-6 lg:px-8 border-b-[3px]"
         style="background-color: hsl(var(--muted))"
       >
         <div class="max-w-3xl mx-auto">
-          <div class="text-center mb-16 reveal">
+          <div class="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 reveal">
             <h2
-              class="text-4xl md:text-5xl font-display font-bold mb-4"
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-2 sm:mb-3 md:mb-4"
               data-i18n="contact.title"
             >
               Связаться с нами
             </h2>
             <p
-              class="text-base"
+              class="text-sm sm:text-base md:text-lg"
               style="color: hsl(var(--muted-foreground))"
               data-i18n="contact.subtitle"
             >
@@ -2267,12 +2274,12 @@
 
           <form
             id="contactForm"
-            class="reveal card rounded-lg p-8"
+            class="reveal card rounded-lg p-4 sm:p-5 md:p-6 lg:p-8"
             style="animation-delay: 0.1s"
           >
-            <div class="mb-6">
+            <div class="mb-4 sm:mb-5 md:mb-6">
               <label
-                class="block text-sm font-medium mb-2"
+                class="block text-xs sm:text-sm font-medium mb-2"
                 data-i18n="contact.form.name"
                 >Ваше имя</label
               >
@@ -2285,9 +2292,9 @@
               />
             </div>
 
-            <div class="mb-6">
+            <div class="mb-4 sm:mb-5 md:mb-6">
               <label
-                class="block text-sm font-medium mb-2"
+                class="block text-xs sm:text-sm font-medium mb-2"
                 data-i18n="contact.form.contact"
                 >Email или телефон</label
               >
@@ -2300,9 +2307,9 @@
               />
             </div>
 
-            <div class="mb-6">
+            <div class="mb-4 sm:mb-5 md:mb-6">
               <label
-                class="block text-sm font-medium mb-2"
+                class="block text-xs sm:text-sm font-medium mb-2"
                 data-i18n="contact.form.message"
                 >Сообщение</label
               >
@@ -2314,7 +2321,7 @@
               ></textarea>
             </div>
 
-            <div class="mb-8">
+            <div class="mb-6 sm:mb-7 md:mb-8">
               <label class="flex items-start cursor-pointer">
                 <input
                   type="checkbox"
@@ -2324,7 +2331,7 @@
                   class="mt-1 mr-3"
                 />
                 <span
-                  class="text-sm"
+                  class="text-xs sm:text-sm"
                   style="color: hsl(var(--muted-foreground))"
                   data-i18n="contact.form.privacy"
                 >
@@ -2335,7 +2342,7 @@
 
             <button
               type="submit"
-              class="btn-primary w-full justify-center py-3"
+              class="btn-primary w-full justify-center py-2 sm:py-2.5 md:py-3"
               data-i18n="contact.form.submit"
             >
               Отправить заявку
