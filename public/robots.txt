@@ -1,0 +1,43 @@
+# robots.txt for my-webs.ru
+
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /js/
+Allow: /css/
+
+# Prevent indexing of privacy and legal pages
+Disallow: /privacy.html
+
+# Prevent indexing of admin panel
+Disallow: /admin/
+Disallow: /login/
+
+# Prevent indexing of API endpoints
+Disallow: /api/
+
+# Prevent indexing of data directory
+Disallow: /data/
+
+# Sitemap location (create this later)
+# Sitemap: https://my-webs.ru/sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Yandex specific settings
+User-agent: Yandex
+Allow: /
+Disallow: /privacy.html
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
+Crawl-delay: 1
+
+# Google specific settings
+User-agent: Googlebot
+Allow: /
+Disallow: /privacy.html
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
