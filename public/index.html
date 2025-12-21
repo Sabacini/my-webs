@@ -2417,9 +2417,9 @@
                 <span
                   class="text-xs sm:text-sm"
                   style="color: hsl(var(--muted-foreground))"
-                  data-i18n="contact.form.privacy"
                 >
-                  Согласен на обработку персональных данных
+                  <span data-i18n="contact.form.privacy">Согласен на обработку персональных данных в соответствии с</span>
+                  <a href="/privacy.html" target="_blank" class="underline hover:no-underline" style="color: hsl(var(--primary))" data-i18n="contact.form.privacy_link">политикой конфиденциальности</a>
                 </span>
               </label>
             </div>
@@ -2436,6 +2436,66 @@
           </form>
         </div>
       </section>
+
+      <!-- Footer -->
+      <footer class="py-8 sm:py-10 md:py-12 px-4 sm:px-5 md:px-6 lg:px-8 border-t-[3px]" style="background-color: hsl(var(--muted)); border-color: hsl(var(--foreground))">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
+            <!-- Company Info -->
+            <div>
+              <h3 class="text-sm sm:text-base font-display font-bold mb-3 sm:mb-4" data-i18n="footer.company">О компании</h3>
+              <p class="text-xs sm:text-sm mb-3" style="color: hsl(var(--muted-foreground))" data-i18n="footer.description">
+                Веб-студия по разработке и продвижению сайтов для малого бизнеса
+              </p>
+            </div>
+
+            <!-- Services -->
+            <div>
+              <h3 class="text-sm sm:text-base font-display font-bold mb-3 sm:mb-4" data-i18n="footer.services_title">Услуги</h3>
+              <ul class="space-y-2 text-xs sm:text-sm" style="color: hsl(var(--muted-foreground))">
+                <li><a href="#services" class="hover:underline" data-i18n="footer.landing">Лендинги</a></li>
+                <li><a href="#services" class="hover:underline" data-i18n="footer.corporate">Корпоративные сайты</a></li>
+                <li><a href="#services" class="hover:underline" data-i18n="footer.ecommerce">Интернет-магазины</a></li>
+                <li><a href="#services" class="hover:underline" data-i18n="footer.seo">SEO-продвижение</a></li>
+              </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div>
+              <h3 class="text-sm sm:text-base font-display font-bold mb-3 sm:mb-4" data-i18n="footer.navigation">Навигация</h3>
+              <ul class="space-y-2 text-xs sm:text-sm" style="color: hsl(var(--muted-foreground))">
+                <li><a href="#about" class="hover:underline" data-i18n="footer.about">О нас</a></li>
+                <li><a href="#services" class="hover:underline" data-i18n="footer.services">Услуги</a></li>
+                <li><a href="#calculator" class="hover:underline" data-i18n="footer.calculator">Калькулятор</a></li>
+                <li><a href="#testimonials" class="hover:underline" data-i18n="footer.testimonials">Отзывы</a></li>
+                <li><a href="#faq" class="hover:underline" data-i18n="footer.faq">FAQ</a></li>
+                <li><a href="#contact" class="hover:underline" data-i18n="footer.contact">Контакты</a></li>
+              </ul>
+            </div>
+
+            <!-- Legal -->
+            <div>
+              <h3 class="text-sm sm:text-base font-display font-bold mb-3 sm:mb-4" data-i18n="footer.legal">Правовая информация</h3>
+              <ul class="space-y-2 text-xs sm:text-sm" style="color: hsl(var(--muted-foreground))">
+                <li><a href="/privacy.html" class="hover:underline" data-i18n="footer.privacy">Политика конфиденциальности</a></li>
+                <li><a href="/privacy.html#cookies" class="hover:underline" data-i18n="footer.cookies">Использование cookies</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Copyright -->
+          <div class="pt-6 sm:pt-8 border-t" style="border-color: hsl(var(--border))">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm" style="color: hsl(var(--muted-foreground))">
+              <p data-i18n="footer.copyright">&copy; 2024 DigAgRu. Все права защищены.</p>
+              <p>
+                <span data-i18n="footer.made_with">Сделано с</span>
+                <span style="color: hsl(var(--primary))">♥</span>
+                <span data-i18n="footer.for_business">для вашего бизнеса</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
     <!-- End Main Content -->
 
@@ -2733,8 +2793,9 @@
             <h3 class="text-lg font-display font-bold mb-2" data-i18n="cookies.title">
               Мы используем cookies
             </h3>
-            <p class="text-sm" style="color: hsl(var(--muted-foreground))" data-i18n="cookies.description">
-              Этот сайт использует cookies для улучшения вашего опыта и аналитики. Продолжая использовать сайт, вы соглашаетесь с нашей политикой конфиденциальности.
+            <p class="text-sm" style="color: hsl(var(--muted-foreground))">
+              <span data-i18n="cookies.description">Этот сайт использует cookies для улучшения вашего опыта и аналитики. Продолжая использовать сайт, вы соглашаетесь с нашей</span>
+              <a href="/privacy.html#cookies" target="_blank" class="underline hover:no-underline" style="color: hsl(var(--primary))" data-i18n="cookies.privacy_link">политикой конфиденциальности</a>.
             </p>
           </div>
           <div class="flex gap-3 flex-shrink-0">
